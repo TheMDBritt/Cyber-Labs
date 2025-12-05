@@ -40,3 +40,10 @@ The lab experience helped me develop essential networking fundamentals which all
 ### nslookup google.com
 ![nslookup](https://github.com/TheMDBritt/Cyber-Labs/blob/main/network%20fundamentals/nslookup.png)
 <br>
+### tracert google.com
+![tracert](https://github.com/TheMDBritt/Cyber-Labs/blob/main/network%20fundamentals/tracert.png)
+<br>
+
+### netstat -an
+![netstat](https://github.com/TheMDBritt/Cyber-Labs/blob/main/network%20fundamentals/netstat.png)
+<br>
