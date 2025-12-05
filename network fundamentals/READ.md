@@ -20,8 +20,7 @@ Understand basic networking concepts used in IT and cybersecurity.
 - nslookup
 
 ## What I Learned
-(Write a short summary here)
+The lab experience helped me develop essential networking fundamentals which all IT and cybersecurity professionals need to know. The lab taught me about device identification through IP addresses and network segmentation through subnets and system communication through ports and protocols. The lab required me to practice network command usage for testing network connections and displaying network routes and active system connections through ping and traceroute and ipconfig and netstat commands. The lab experience demonstrated network device communication methods while teaching me essential skills for security work and network troubleshooting and scanning operations.
 
 ## Screenshots
-(You will upload them after completing the lab)
 
