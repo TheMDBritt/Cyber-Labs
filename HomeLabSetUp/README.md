@@ -41,3 +41,4 @@ The following checks were performed:
 
 ## Outcome
 The environment was stabilized and prepared for further lab activities, including SIEM deployment, log collection, and attack simulation.
+![DNS Resolution Restored](dns-resolution.png)
