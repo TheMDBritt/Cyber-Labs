@@ -52,29 +52,30 @@ These tasks align with common responsibilities in system administration and cybe
 
 ## Lab Screenshots
 
-![UAM 1](https://github.com/TheMDBritt/Cyber-Labs/blob/main/windows-user-account-management-lab/UAM%201.png)
+### Open User Account Management
+![Open User Account Management](https://github.com/TheMDBritt/Cyber-Labs/blob/main/windows-user-account-management-lab/UAM%201.png)
 <br>
 
-### UAM 2
-![UAM 2](https://github.com/TheMDBritt/Cyber-Labs/blob/main/windows-user-account-management-lab/UAM%202.png)
+### Create a New Local User Account
+![Create Local User](https://github.com/TheMDBritt/Cyber-Labs/blob/main/windows-user-account-management-lab/UAM%202.png)
 <br>
 
-### UAM 3
-![UAM 3](https://github.com/TheMDBritt/Cyber-Labs/blob/main/windows-user-account-management-lab/UAM%203.png)
+### Configure User Password and Security Settings
+![Configure Password](https://github.com/TheMDBritt/Cyber-Labs/blob/main/windows-user-account-management-lab/UAM%203.png)
 <br>
 
-### UAM 4
-![UAM 4](https://github.com/TheMDBritt/Cyber-Labs/blob/main/windows-user-account-management-lab/UAM%204.png)
+### User Account Control (UAC) Prompt
+![UAC Prompt](https://github.com/TheMDBritt/Cyber-Labs/blob/main/windows-user-account-management-lab/UAM%204.png)
 <br>
 
-### UAM 5
-![UAM 5](https://github.com/TheMDBritt/Cyber-Labs/blob/main/windows-user-account-management-lab/UAM%205.png)
+### Manage Existing Local User Accounts
+![Manage Accounts](https://github.com/TheMDBritt/Cyber-Labs/blob/main/windows-user-account-management-lab/UAM%205.png)
 <br>
 
-### UAM 6
-![UAM 6](https://github.com/TheMDBritt/Cyber-Labs/blob/main/windows-user-account-management-lab/UAM%206.png)
+### Delete a Local User Account
+![Delete User Account](https://github.com/TheMDBritt/Cyber-Labs/blob/main/windows-user-account-management-lab/UAM%206.png)
 <br>
----
+
 
 ## Next Steps
 - Group Policy exploration  
