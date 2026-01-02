@@ -1,0 +1,4 @@
+- 3+ years of security operations experience supporting enterprise environments.
+- Led alert triage and incident response for phishing, malware, and account compromise.
+- Built automation playbooks that reduced mean-time-to-response by 35%.
+- Experienced with SIEM tooling, endpoint detection, and cloud security monitoring.
