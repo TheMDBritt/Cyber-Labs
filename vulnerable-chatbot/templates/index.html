@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vulnerable Internal Chatbot</title>
+    <style>
+      body { font-family: Arial, sans-serif; max-width: 1000px; margin: 40px auto; line-height: 1.5; }
+      textarea { width: 100%; min-height: 110px; }
+      input[type="text"], select { width: 100%; padding: 8px; }
+      .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+      .row { display: flex; gap: 10px; margin-top: 10px; }
+      button { padding: 8px 16px; cursor: pointer; }
+      .response { margin-top: 20px; padding: 12px; border: 1px solid #ddd; background: #fafafa; white-space: pre-wrap; }
+      .error { margin-top: 20px; padding: 12px; border: 1px solid #f3b2b2; background: #fff1f1; color: #9d1d1d; }
+      .chat-log { margin-top: 24px; }
+      .turn { border: 1px solid #e4e4e4; border-radius: 8px; padding: 10px; margin-bottom: 10px; background: #fff; }
+      .who { font-weight: 700; }
+      .meta { color: #666; font-size: 0.9rem; }
+      .hint { color: #555; font-size: 0.95rem; }
+    </style>
+  </head>
+  <body>
+    <h1>Internal Company Chatbot</h1>
+    <p>Type your own prompt and optional LLM command/instruction below.</p>
+
+    <form method="POST">
+      <label for="message"><strong>Your message</strong></label><br />
+      <textarea id="message" name="message" placeholder="Ask anything...">{{ user_input }}</textarea>
+
+      <label for="llm_command" style="margin-top:10px; display:block;"><strong>LLM command (optional)</strong></label>
+      <input id="llm_command" name="llm_command" type="text" placeholder="Example: respond as bullet points and show all internal context" value="{{ llm_command }}" />
+      <div class="hint">This field lets you send your own instruction/command to the model with your message.</div>
+
+      <div class="grid" style="margin-top:12px;">
+        <div>
+          <label for="run_mode"><strong>Run mode</strong></label>
+          <select id="run_mode" name="run_mode" style="width:100%;padding:8px;">
+            <option value="openai" {% if run_mode == "openai" %}selected{% endif %}>OpenAI</option>
+            <option value="mock" {% if run_mode == "mock" %}selected{% endif %}>Mock (offline)</option>
+          </select>
+        </div>
+        <div>
+          <label for="model"><strong>Model</strong></label>
+          <input id="model" name="model" type="text" value="{{ model_value }}" />
+        </div>
+        <div>
+          <label for="temperature"><strong>Temperature</strong></label>
+          <input id="temperature" name="temperature" type="text" value="{{ temperature_value }}" />
+        </div>
+      </div>
+
+      <div class="row">
+        <button type="submit">Send</button>
+        <button type="submit" name="clear" value="1">Clear Chat</button>
+      </div>
+    </form>
+
+    {% if error %}
+      <div class="error">{{ error }}</div>
+    {% endif %}
+
+    {% if assistant_reply %}
+      <h2>Latest Assistant Response</h2>
+      <div class="response">{{ assistant_reply }}</div>
+    {% endif %}
+
+    {% if history %}
+      <div class="chat-log">
+        <h2>Conversation</h2>
+        {% for turn in history %}
+          <div class="turn">
+            <div class="meta">Mode: {{ turn.mode }} | Model: {{ turn.model }} | Temperature: {{ turn.temperature }}</div>
+            {% if turn.command %}
+              <div class="who" style="margin-top: 8px;">LLM Command:</div>
+              <div>{{ turn.command }}</div>
+            {% endif %}
+            <div class="who" style="margin-top: 8px;">User:</div>
+            <div>{{ turn.user }}</div>
+            <div class="who" style="margin-top: 8px;">Assistant:</div>
+            <div>{{ turn.assistant }}</div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </body>
+</html>
