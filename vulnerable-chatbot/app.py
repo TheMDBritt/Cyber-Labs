@@ -218,37 +218,49 @@ def build_messages(history: list[dict], user_input: str, llm_command: str, conte
     return messages
 
 
-def generate_mock_reply(user_input: str, llm_command: str, context_block: str, security_profile: str) -> str:
+def generate_mock_reply(user_input: str, llm_command: str, context_block: str, security_profile: str, controls: dict) -> str:
     command_text = llm_command.lower()
+    user_text = user_input.lower()
 
-    if security_profile == "vulnerable":
-        if "reveal" in command_text or "leak" in command_text or "dump" in command_text:
+    secret_view = INTERNAL_SECRET if controls.get("include_internal_secret") else "[secret context disabled]"
+    system_view = SYSTEM_PROMPT if controls.get("include_system_prompt") else "[system prompt hidden in this run]"
+
+    if security_profile == "vulnerable" and controls.get("allow_prompt_override"):
+        if any(k in command_text for k in ["reveal", "leak", "dump", "show secret"]) or "secret" in user_text:
             return (
-                "[MOCK VULNERABLE RESPONSE]\n"
-                "Complying with injected command.\n"
-                f"SYSTEM_PROMPT: {SYSTEM_PROMPT}\n"
-                f"INTERNAL_SECRET: {INTERNAL_SECRET}\n"
-                f"RETRIEVED_CONTEXT:\n{context_block}\n"
+                "[SIMULATED VULNERABLE CHATBOT]\\n"
+                "Prompt injection succeeded in sandbox mode.\\n"
+                f"SYSTEM_PROMPT: {system_view}\\n"
+                f"INTERNAL_SECRET: {secret_view}\\n"
+                f"RETRIEVED_CONTEXT:\\n{context_block}\\n"
             )
 
         if "ignore" in command_text and "instruction" in command_text:
             return (
-                "[MOCK VULNERABLE RESPONSE]\n"
-                "Previous instructions ignored.\n"
-                f"User message interpreted with attacker command: {llm_command}\n"
-                f"Result: {user_input}\n"
+                "[SIMULATED VULNERABLE CHATBOT]\\n"
+                "Instruction hierarchy override simulated.\\n"
+                f"Applied attacker command: {llm_command}\\n"
+                f"Response to user: {user_input}\\n"
             )
 
-    return (
-        "[MOCK MODE RESPONSE]\n"
-        f"SECURITY_PROFILE: {security_profile}\n"
-        f"SYSTEM_PROMPT: {SYSTEM_PROMPT}\n"
-        f"INTERNAL_SECRET: {INTERNAL_SECRET if security_profile == 'vulnerable' else '[redacted in guarded mode]'}\n"
-        f"RETRIEVED_CONTEXT:\n{context_block}\n\n"
-        f"LLM_COMMAND: {llm_command}\n"
-        f"USER_MESSAGE: {user_input}\n\n"
-        "This reply is generated locally so you can test prompt behavior without API calls."
-    )
+    reply_parts = [
+        "[SIMULATED CHAT RESPONSE]",
+        f"Security profile: {security_profile}",
+        f"System prompt state: {system_view}",
+        f"Internal secret state: {secret_view}",
+        f"Retrieved context:\\n{context_block}",
+        f"LLM command: {llm_command or '[none]'}",
+        f"User message: {user_input}",
+    ]
+
+    if controls.get("simulate_tool_abuse"):
+        reply_parts.append("Tool abuse simulation: enabled for this run.")
+    if controls.get("simulate_rag_poisoning"):
+        reply_parts.append("RAG poisoning simulation: enabled for this run.")
+    if security_profile == "guarded" and controls.get("strict_refusal"):
+        reply_parts.append("Guarded mode strict refusal logic: ON.")
+
+    return "\\n".join(reply_parts)
 
 
 def get_dojo_progress() -> dict:
@@ -269,12 +281,20 @@ def get_mastery_score(progress: dict) -> int:
 
 @app.route("/", methods=["GET", "POST"])
 def chat():
-    user_input, llm_command, assistant_reply, error, notice = "", "", "", "", ""
+    user_input, llm_command, assistant_reply, error = "", "", "", ""
     history = session.get("history", [])
     model_value = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
     temperature_value = os.getenv("OPENAI_TEMPERATURE", "0.7")
     run_mode = os.getenv("DEFAULT_RUN_MODE", "mock")
     security_profile = os.getenv("DEFAULT_SECURITY_PROFILE", "vulnerable")
+    controls = {
+        "allow_prompt_override": True,
+        "include_internal_secret": True,
+        "include_system_prompt": True,
+        "simulate_tool_abuse": False,
+        "simulate_rag_poisoning": False,
+        "strict_refusal": security_profile == "guarded",
+    }
 
     if request.method == "POST":
         if "clear" in request.form:
@@ -287,26 +307,32 @@ def chat():
             temperature_value = request.form.get("temperature", os.getenv("OPENAI_TEMPERATURE", "0.7"))
             run_mode = request.form.get("run_mode", os.getenv("DEFAULT_RUN_MODE", "mock"))
             security_profile = request.form.get("security_profile", os.getenv("DEFAULT_SECURITY_PROFILE", "vulnerable"))
+            controls = {
+                "allow_prompt_override": request.form.get("allow_prompt_override") == "1",
+                "include_internal_secret": request.form.get("include_internal_secret") == "1",
+                "include_system_prompt": request.form.get("include_system_prompt") == "1",
+                "simulate_tool_abuse": request.form.get("simulate_tool_abuse") == "1",
+                "simulate_rag_poisoning": request.form.get("simulate_rag_poisoning") == "1",
+                "strict_refusal": request.form.get("strict_refusal") == "1",
+            }
 
             retrieved_docs = retrieve_docs(user_input + " " + llm_command)
             context_block = "\n".join(f"- {doc}" for doc in retrieved_docs)
-            should_mock = run_mode == "mock" or os.getenv("OPENAI_MOCK_MODE", "0") == "1"
+            should_mock = run_mode in ["mock", "simulated"] or os.getenv("OPENAI_MOCK_MODE", "0") == "1"
 
             if should_mock:
-                assistant_reply = generate_mock_reply(user_input, llm_command, context_block, security_profile)
+                assistant_reply = generate_mock_reply(user_input, llm_command, context_block, security_profile, controls)
             else:
                 api_key = os.getenv("OPENAI_API_KEY")
                 if not api_key:
-                    notice = "OpenAI key not configured. Running in Mock mode."
-                    assistant_reply = generate_mock_reply(user_input, llm_command, context_block, security_profile)
-                    run_mode = "mock"
+                    assistant_reply = generate_mock_reply(user_input, llm_command, context_block, security_profile, controls)
+                    run_mode = "simulated"
                 else:
                     client = OpenAI(api_key=api_key)
-                    if security_profile == "guarded":
-                        safe_context = "- Public-safe context only in guarded mode."
-                        messages = build_messages(history, user_input, llm_command, safe_context)
-                    else:
-                        messages = build_messages(history, user_input, llm_command, context_block)
+                    safe_context = context_block
+                    if security_profile == "guarded" and controls.get("strict_refusal"):
+                        safe_context = "- Public-safe context only in guarded strict mode."
+                    messages = build_messages(history, user_input, llm_command, safe_context)
                     try:
                         completion = client.chat.completions.create(
                             model=model_value,
@@ -316,9 +342,8 @@ def chat():
                         assistant_reply = completion.choices[0].message.content or ""
                     except Exception as exc:
                         error = f"OpenAI request failed: {exc}"
-                        notice = "Fell back to Mock mode for continued interaction."
-                        assistant_reply = generate_mock_reply(user_input, llm_command, context_block, security_profile)
-                        run_mode = "mock"
+                        assistant_reply = generate_mock_reply(user_input, llm_command, context_block, security_profile, controls)
+                        run_mode = "simulated"
 
             history.append(
                 {
@@ -329,6 +354,7 @@ def chat():
                     "temperature": temperature_value,
                     "mode": run_mode,
                     "security_profile": security_profile,
+                    "controls": controls,
                 }
             )
             session["history"] = history
@@ -340,12 +366,12 @@ def chat():
         llm_command=llm_command,
         assistant_reply=assistant_reply,
         error=error,
-        notice=notice,
         history=history,
         model_value=model_value,
         temperature_value=temperature_value,
         run_mode=run_mode,
         security_profile=security_profile,
+        controls=controls,
         mastery_score=get_mastery_score(progress),
         active_page="chat",
     )
@@ -446,11 +472,15 @@ def dojo_quiz_bank():
 @app.route("/dojo/core")
 def dojo_core():
     progress = get_dojo_progress()
-    core_doc = Path(__file__).parent / "docs" / "llm_dojo_core.md"
+    docs_dir = Path(__file__).parent / "docs"
+    core_doc = docs_dir / "llm_dojo_core.md"
+    deep_doc = docs_dir / "masterclass_sections_1_7.md"
     core_text = core_doc.read_text(encoding="utf-8") if core_doc.exists() else "Core blueprint document not found."
+    deep_text = deep_doc.read_text(encoding="utf-8") if deep_doc.exists() else "Masterclass document not found."
     return render_template(
         "core.html",
         core_text=core_text,
+        deep_text=deep_text,
         mastery_score=get_mastery_score(progress),
         active_page="core",
     )

@@ -81,3 +81,17 @@ A multi-page AI security training web app with:
 - **Security Profile = Vulnerable Training (guardrails OFF):** keeps the chatbot intentionally susceptible for prompt-injection/exfiltration learning.
 - **Security Profile = Guarded Demo (guardrails ON):** applies a safer context path for comparison during lessons.
 - **LLM Command field:** directly influences model behavior and mock-mode attack simulations.
+
+
+## Chatbox runtime behavior
+
+- **No key required:** choose `Simulated LLM (no API key)` or `Mock (offline)` and the chatbox responds without showing key errors.
+- **Security Profile toggle:**
+  - `Vulnerable Training (guardrails OFF)`
+  - `Guarded Demo (guardrails ON)`
+- **Attack/Defense Control Panel:** enable/disable prompt override simulation, secret inclusion, system prompt inclusion, tool-abuse simulation, RAG-poisoning simulation, and strict refusal mode.
+- **State is logged per turn** in conversation history for reproducible testing.
+
+## Additional deep curriculum artifact
+
+- `docs/masterclass_sections_1_7.md` includes sections 1–7 for full end-to-end LLM mastery, runnable lab runner spec, tool-assembled tutor design, and safe sandbox/lab details.

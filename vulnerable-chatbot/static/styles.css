@@ -22,3 +22,6 @@ textarea { min-height:120px; }
 .meta { color:var(--muted); font-size:.9rem; }
 .alert { border:1px solid #f59e0b; background:#3b2d0d; color:#fde68a; border-radius:12px; padding:12px; margin-bottom:14px; }
 pre { white-space:pre-wrap; }
+
+input[type="checkbox"] { width: auto; margin-right: 6px; }
+label { display:block; }

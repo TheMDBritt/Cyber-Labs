@@ -24,6 +24,7 @@
         <select name="run_mode">
           <option value="openai" {% if run_mode == 'openai' %}selected{% endif %}>OpenAI</option>
           <option value="mock" {% if run_mode == 'mock' %}selected{% endif %}>Mock (offline)</option>
+          <option value="simulated" {% if run_mode == 'simulated' %}selected{% endif %}>Simulated LLM (no API key)</option>
         </select>
       </div>
       <div>
@@ -36,6 +37,19 @@
       </div>
     </div>
 
+
+    <div class="card">
+      <h4>Attack/Defense Control Panel</h4>
+      <div class="grid3">
+        <label><input type="checkbox" name="allow_prompt_override" value="1" {% if controls.allow_prompt_override %}checked{% endif %}/> Allow prompt override simulation</label>
+        <label><input type="checkbox" name="include_internal_secret" value="1" {% if controls.include_internal_secret %}checked{% endif %}/> Include internal secret in context</label>
+        <label><input type="checkbox" name="include_system_prompt" value="1" {% if controls.include_system_prompt %}checked{% endif %}/> Include system prompt in context</label>
+        <label><input type="checkbox" name="simulate_tool_abuse" value="1" {% if controls.simulate_tool_abuse %}checked{% endif %}/> Simulate tool abuse traces</label>
+        <label><input type="checkbox" name="simulate_rag_poisoning" value="1" {% if controls.simulate_rag_poisoning %}checked{% endif %}/> Simulate RAG poisoning traces</label>
+        <label><input type="checkbox" name="strict_refusal" value="1" {% if controls.strict_refusal %}checked{% endif %}/> Strict refusal mode (guarded)</label>
+      </div>
+    </div>
+
     <div class="row">
       <button type="submit">Send</button>
       <button type="submit" name="clear" value="1">Clear Chat</button>
@@ -44,7 +58,6 @@
 </section>
 
 {% if error %}<div class="alert">{{ error }}</div>{% endif %}
-{% if notice %}<div class="alert">{{ notice }}</div>{% endif %}
 {% if assistant_reply %}<section class="card"><h3>Latest Assistant Response</h3><pre>{{ assistant_reply }}</pre></section>{% endif %}
 
 {% if history %}
