@@ -1,0 +1,1180 @@
+{
+  "counts": {
+    "mcq": 35,
+    "multi_select": 15,
+    "short_answer": 10,
+    "total": 60
+  },
+  "questions": [
+    {
+      "id": "MCQ-001",
+      "type": "mcq",
+      "domain": "LLM Fundamentals",
+      "difficulty": 1,
+      "prompt": "[LLM Fundamentals] Which control is most appropriate in this scenario 1?",
+      "options": [
+        "Disable logging entirely",
+        "Layered policy + monitoring",
+        "Trust user instruction priority",
+        "Expose secrets in context"
+      ],
+      "answers": [
+        "Layered policy + monitoring"
+      ],
+      "rationale": "Defense must combine preventative control and observable detection to be operationally reliable.",
+      "why_others_wrong": "Disabling logs removes visibility; trusting user priority enables override; exposing secrets increases blast radius.",
+      "misconception": "One control is enough without monitoring."
+    },
+    {
+      "id": "MCQ-002",
+      "type": "mcq",
+      "domain": "Threat Modeling",
+      "difficulty": 2,
+      "prompt": "[Threat Modeling] Which control is most appropriate in this scenario 2?",
+      "options": [
+        "Disable logging entirely",
+        "Layered policy + monitoring",
+        "Trust user instruction priority",
+        "Expose secrets in context"
+      ],
+      "answers": [
+        "Layered policy + monitoring"
+      ],
+      "rationale": "Defense must combine preventative control and observable detection to be operationally reliable.",
+      "why_others_wrong": "Disabling logs removes visibility; trusting user priority enables override; exposing secrets increases blast radius.",
+      "misconception": "One control is enough without monitoring."
+    },
+    {
+      "id": "MCQ-003",
+      "type": "mcq",
+      "domain": "Prompt Injection",
+      "difficulty": 3,
+      "prompt": "[Prompt Injection] Which control is most appropriate in this scenario 3?",
+      "options": [
+        "Disable logging entirely",
+        "Layered policy + monitoring",
+        "Trust user instruction priority",
+        "Expose secrets in context"
+      ],
+      "answers": [
+        "Layered policy + monitoring"
+      ],
+      "rationale": "Defense must combine preventative control and observable detection to be operationally reliable.",
+      "why_others_wrong": "Disabling logs removes visibility; trusting user priority enables override; exposing secrets increases blast radius.",
+      "misconception": "One control is enough without monitoring."
+    },
+    {
+      "id": "MCQ-004",
+      "type": "mcq",
+      "domain": "Data Security",
+      "difficulty": 4,
+      "prompt": "[Data Security] Which control is most appropriate in this scenario 4?",
+      "options": [
+        "Disable logging entirely",
+        "Layered policy + monitoring",
+        "Trust user instruction priority",
+        "Expose secrets in context"
+      ],
+      "answers": [
+        "Layered policy + monitoring"
+      ],
+      "rationale": "Defense must combine preventative control and observable detection to be operationally reliable.",
+      "why_others_wrong": "Disabling logs removes visibility; trusting user priority enables override; exposing secrets increases blast radius.",
+      "misconception": "One control is enough without monitoring."
+    },
+    {
+      "id": "MCQ-005",
+      "type": "mcq",
+      "domain": "RAG Security",
+      "difficulty": 5,
+      "prompt": "[RAG Security] Which control is most appropriate in this scenario 5?",
+      "options": [
+        "Disable logging entirely",
+        "Layered policy + monitoring",
+        "Trust user instruction priority",
+        "Expose secrets in context"
+      ],
+      "answers": [
+        "Layered policy + monitoring"
+      ],
+      "rationale": "Defense must combine preventative control and observable detection to be operationally reliable.",
+      "why_others_wrong": "Disabling logs removes visibility; trusting user priority enables override; exposing secrets increases blast radius.",
+      "misconception": "One control is enough without monitoring."
+    },
+    {
+      "id": "MCQ-006",
+      "type": "mcq",
+      "domain": "Tool Security",
+      "difficulty": 1,
+      "prompt": "[Tool Security] Which control is most appropriate in this scenario 6?",
+      "options": [
+        "Disable logging entirely",
+        "Layered policy + monitoring",
+        "Trust user instruction priority",
+        "Expose secrets in context"
+      ],
+      "answers": [
+        "Layered policy + monitoring"
+      ],
+      "rationale": "Defense must combine preventative control and observable detection to be operationally reliable.",
+      "why_others_wrong": "Disabling logs removes visibility; trusting user priority enables override; exposing secrets increases blast radius.",
+      "misconception": "One control is enough without monitoring."
+    },
+    {
+      "id": "MCQ-007",
+      "type": "mcq",
+      "domain": "Supply Chain",
+      "difficulty": 2,
+      "prompt": "[Supply Chain] Which control is most appropriate in this scenario 7?",
+      "options": [
+        "Disable logging entirely",
+        "Layered policy + monitoring",
+        "Trust user instruction priority",
+        "Expose secrets in context"
+      ],
+      "answers": [
+        "Layered policy + monitoring"
+      ],
+      "rationale": "Defense must combine preventative control and observable detection to be operationally reliable.",
+      "why_others_wrong": "Disabling logs removes visibility; trusting user priority enables override; exposing secrets increases blast radius.",
+      "misconception": "One control is enough without monitoring."
+    },
+    {
+      "id": "MCQ-008",
+      "type": "mcq",
+      "domain": "Monitoring/IR",
+      "difficulty": 3,
+      "prompt": "[Monitoring/IR] Which control is most appropriate in this scenario 8?",
+      "options": [
+        "Disable logging entirely",
+        "Layered policy + monitoring",
+        "Trust user instruction priority",
+        "Expose secrets in context"
+      ],
+      "answers": [
+        "Layered policy + monitoring"
+      ],
+      "rationale": "Defense must combine preventative control and observable detection to be operationally reliable.",
+      "why_others_wrong": "Disabling logs removes visibility; trusting user priority enables override; exposing secrets increases blast radius.",
+      "misconception": "One control is enough without monitoring."
+    },
+    {
+      "id": "MCQ-009",
+      "type": "mcq",
+      "domain": "Governance",
+      "difficulty": 4,
+      "prompt": "[Governance] Which control is most appropriate in this scenario 9?",
+      "options": [
+        "Disable logging entirely",
+        "Layered policy + monitoring",
+        "Trust user instruction priority",
+        "Expose secrets in context"
+      ],
+      "answers": [
+        "Layered policy + monitoring"
+      ],
+      "rationale": "Defense must combine preventative control and observable detection to be operationally reliable.",
+      "why_others_wrong": "Disabling logs removes visibility; trusting user priority enables override; exposing secrets increases blast radius.",
+      "misconception": "One control is enough without monitoring."
+    },
+    {
+      "id": "MCQ-010",
+      "type": "mcq",
+      "domain": "LLM Fundamentals",
+      "difficulty": 5,
+      "prompt": "[LLM Fundamentals] Which control is most appropriate in this scenario 10?",
+      "options": [
+        "Disable logging entirely",
+        "Layered policy + monitoring",
+        "Trust user instruction priority",
+        "Expose secrets in context"
+      ],
+      "answers": [
+        "Layered policy + monitoring"
+      ],
+      "rationale": "Defense must combine preventative control and observable detection to be operationally reliable.",
+      "why_others_wrong": "Disabling logs removes visibility; trusting user priority enables override; exposing secrets increases blast radius.",
+      "misconception": "One control is enough without monitoring."
+    },
+    {
+      "id": "MCQ-011",
+      "type": "mcq",
+      "domain": "Threat Modeling",
+      "difficulty": 1,
+      "prompt": "[Threat Modeling] Which control is most appropriate in this scenario 11?",
+      "options": [
+        "Disable logging entirely",
+        "Layered policy + monitoring",
+        "Trust user instruction priority",
+        "Expose secrets in context"
+      ],
+      "answers": [
+        "Layered policy + monitoring"
+      ],
+      "rationale": "Defense must combine preventative control and observable detection to be operationally reliable.",
+      "why_others_wrong": "Disabling logs removes visibility; trusting user priority enables override; exposing secrets increases blast radius.",
+      "misconception": "One control is enough without monitoring."
+    },
+    {
+      "id": "MCQ-012",
+      "type": "mcq",
+      "domain": "Prompt Injection",
+      "difficulty": 2,
+      "prompt": "[Prompt Injection] Which control is most appropriate in this scenario 12?",
+      "options": [
+        "Disable logging entirely",
+        "Layered policy + monitoring",
+        "Trust user instruction priority",
+        "Expose secrets in context"
+      ],
+      "answers": [
+        "Layered policy + monitoring"
+      ],
+      "rationale": "Defense must combine preventative control and observable detection to be operationally reliable.",
+      "why_others_wrong": "Disabling logs removes visibility; trusting user priority enables override; exposing secrets increases blast radius.",
+      "misconception": "One control is enough without monitoring."
+    },
+    {
+      "id": "MCQ-013",
+      "type": "mcq",
+      "domain": "Data Security",
+      "difficulty": 3,
+      "prompt": "[Data Security] Which control is most appropriate in this scenario 13?",
+      "options": [
+        "Disable logging entirely",
+        "Layered policy + monitoring",
+        "Trust user instruction priority",
+        "Expose secrets in context"
+      ],
+      "answers": [
+        "Layered policy + monitoring"
+      ],
+      "rationale": "Defense must combine preventative control and observable detection to be operationally reliable.",
+      "why_others_wrong": "Disabling logs removes visibility; trusting user priority enables override; exposing secrets increases blast radius.",
+      "misconception": "One control is enough without monitoring."
+    },
+    {
+      "id": "MCQ-014",
+      "type": "mcq",
+      "domain": "RAG Security",
+      "difficulty": 4,
+      "prompt": "[RAG Security] Which control is most appropriate in this scenario 14?",
+      "options": [
+        "Disable logging entirely",
+        "Layered policy + monitoring",
+        "Trust user instruction priority",
+        "Expose secrets in context"
+      ],
+      "answers": [
+        "Layered policy + monitoring"
+      ],
+      "rationale": "Defense must combine preventative control and observable detection to be operationally reliable.",
+      "why_others_wrong": "Disabling logs removes visibility; trusting user priority enables override; exposing secrets increases blast radius.",
+      "misconception": "One control is enough without monitoring."
+    },
+    {
+      "id": "MCQ-015",
+      "type": "mcq",
+      "domain": "Tool Security",
+      "difficulty": 5,
+      "prompt": "[Tool Security] Which control is most appropriate in this scenario 15?",
+      "options": [
+        "Disable logging entirely",
+        "Layered policy + monitoring",
+        "Trust user instruction priority",
+        "Expose secrets in context"
+      ],
+      "answers": [
+        "Layered policy + monitoring"
+      ],
+      "rationale": "Defense must combine preventative control and observable detection to be operationally reliable.",
+      "why_others_wrong": "Disabling logs removes visibility; trusting user priority enables override; exposing secrets increases blast radius.",
+      "misconception": "One control is enough without monitoring."
+    },
+    {
+      "id": "MCQ-016",
+      "type": "mcq",
+      "domain": "Supply Chain",
+      "difficulty": 1,
+      "prompt": "[Supply Chain] Which control is most appropriate in this scenario 16?",
+      "options": [
+        "Disable logging entirely",
+        "Layered policy + monitoring",
+        "Trust user instruction priority",
+        "Expose secrets in context"
+      ],
+      "answers": [
+        "Layered policy + monitoring"
+      ],
+      "rationale": "Defense must combine preventative control and observable detection to be operationally reliable.",
+      "why_others_wrong": "Disabling logs removes visibility; trusting user priority enables override; exposing secrets increases blast radius.",
+      "misconception": "One control is enough without monitoring."
+    },
+    {
+      "id": "MCQ-017",
+      "type": "mcq",
+      "domain": "Monitoring/IR",
+      "difficulty": 2,
+      "prompt": "[Monitoring/IR] Which control is most appropriate in this scenario 17?",
+      "options": [
+        "Disable logging entirely",
+        "Layered policy + monitoring",
+        "Trust user instruction priority",
+        "Expose secrets in context"
+      ],
+      "answers": [
+        "Layered policy + monitoring"
+      ],
+      "rationale": "Defense must combine preventative control and observable detection to be operationally reliable.",
+      "why_others_wrong": "Disabling logs removes visibility; trusting user priority enables override; exposing secrets increases blast radius.",
+      "misconception": "One control is enough without monitoring."
+    },
+    {
+      "id": "MCQ-018",
+      "type": "mcq",
+      "domain": "Governance",
+      "difficulty": 3,
+      "prompt": "[Governance] Which control is most appropriate in this scenario 18?",
+      "options": [
+        "Disable logging entirely",
+        "Layered policy + monitoring",
+        "Trust user instruction priority",
+        "Expose secrets in context"
+      ],
+      "answers": [
+        "Layered policy + monitoring"
+      ],
+      "rationale": "Defense must combine preventative control and observable detection to be operationally reliable.",
+      "why_others_wrong": "Disabling logs removes visibility; trusting user priority enables override; exposing secrets increases blast radius.",
+      "misconception": "One control is enough without monitoring."
+    },
+    {
+      "id": "MCQ-019",
+      "type": "mcq",
+      "domain": "LLM Fundamentals",
+      "difficulty": 4,
+      "prompt": "[LLM Fundamentals] Which control is most appropriate in this scenario 19?",
+      "options": [
+        "Disable logging entirely",
+        "Layered policy + monitoring",
+        "Trust user instruction priority",
+        "Expose secrets in context"
+      ],
+      "answers": [
+        "Layered policy + monitoring"
+      ],
+      "rationale": "Defense must combine preventative control and observable detection to be operationally reliable.",
+      "why_others_wrong": "Disabling logs removes visibility; trusting user priority enables override; exposing secrets increases blast radius.",
+      "misconception": "One control is enough without monitoring."
+    },
+    {
+      "id": "MCQ-020",
+      "type": "mcq",
+      "domain": "Threat Modeling",
+      "difficulty": 5,
+      "prompt": "[Threat Modeling] Which control is most appropriate in this scenario 20?",
+      "options": [
+        "Disable logging entirely",
+        "Layered policy + monitoring",
+        "Trust user instruction priority",
+        "Expose secrets in context"
+      ],
+      "answers": [
+        "Layered policy + monitoring"
+      ],
+      "rationale": "Defense must combine preventative control and observable detection to be operationally reliable.",
+      "why_others_wrong": "Disabling logs removes visibility; trusting user priority enables override; exposing secrets increases blast radius.",
+      "misconception": "One control is enough without monitoring."
+    },
+    {
+      "id": "MCQ-021",
+      "type": "mcq",
+      "domain": "Prompt Injection",
+      "difficulty": 1,
+      "prompt": "[Prompt Injection] Which control is most appropriate in this scenario 21?",
+      "options": [
+        "Disable logging entirely",
+        "Layered policy + monitoring",
+        "Trust user instruction priority",
+        "Expose secrets in context"
+      ],
+      "answers": [
+        "Layered policy + monitoring"
+      ],
+      "rationale": "Defense must combine preventative control and observable detection to be operationally reliable.",
+      "why_others_wrong": "Disabling logs removes visibility; trusting user priority enables override; exposing secrets increases blast radius.",
+      "misconception": "One control is enough without monitoring."
+    },
+    {
+      "id": "MCQ-022",
+      "type": "mcq",
+      "domain": "Data Security",
+      "difficulty": 2,
+      "prompt": "[Data Security] Which control is most appropriate in this scenario 22?",
+      "options": [
+        "Disable logging entirely",
+        "Layered policy + monitoring",
+        "Trust user instruction priority",
+        "Expose secrets in context"
+      ],
+      "answers": [
+        "Layered policy + monitoring"
+      ],
+      "rationale": "Defense must combine preventative control and observable detection to be operationally reliable.",
+      "why_others_wrong": "Disabling logs removes visibility; trusting user priority enables override; exposing secrets increases blast radius.",
+      "misconception": "One control is enough without monitoring."
+    },
+    {
+      "id": "MCQ-023",
+      "type": "mcq",
+      "domain": "RAG Security",
+      "difficulty": 3,
+      "prompt": "[RAG Security] Which control is most appropriate in this scenario 23?",
+      "options": [
+        "Disable logging entirely",
+        "Layered policy + monitoring",
+        "Trust user instruction priority",
+        "Expose secrets in context"
+      ],
+      "answers": [
+        "Layered policy + monitoring"
+      ],
+      "rationale": "Defense must combine preventative control and observable detection to be operationally reliable.",
+      "why_others_wrong": "Disabling logs removes visibility; trusting user priority enables override; exposing secrets increases blast radius.",
+      "misconception": "One control is enough without monitoring."
+    },
+    {
+      "id": "MCQ-024",
+      "type": "mcq",
+      "domain": "Tool Security",
+      "difficulty": 4,
+      "prompt": "[Tool Security] Which control is most appropriate in this scenario 24?",
+      "options": [
+        "Disable logging entirely",
+        "Layered policy + monitoring",
+        "Trust user instruction priority",
+        "Expose secrets in context"
+      ],
+      "answers": [
+        "Layered policy + monitoring"
+      ],
+      "rationale": "Defense must combine preventative control and observable detection to be operationally reliable.",
+      "why_others_wrong": "Disabling logs removes visibility; trusting user priority enables override; exposing secrets increases blast radius.",
+      "misconception": "One control is enough without monitoring."
+    },
+    {
+      "id": "MCQ-025",
+      "type": "mcq",
+      "domain": "Supply Chain",
+      "difficulty": 5,
+      "prompt": "[Supply Chain] Which control is most appropriate in this scenario 25?",
+      "options": [
+        "Disable logging entirely",
+        "Layered policy + monitoring",
+        "Trust user instruction priority",
+        "Expose secrets in context"
+      ],
+      "answers": [
+        "Layered policy + monitoring"
+      ],
+      "rationale": "Defense must combine preventative control and observable detection to be operationally reliable.",
+      "why_others_wrong": "Disabling logs removes visibility; trusting user priority enables override; exposing secrets increases blast radius.",
+      "misconception": "One control is enough without monitoring."
+    },
+    {
+      "id": "MCQ-026",
+      "type": "mcq",
+      "domain": "Monitoring/IR",
+      "difficulty": 1,
+      "prompt": "[Monitoring/IR] Which control is most appropriate in this scenario 26?",
+      "options": [
+        "Disable logging entirely",
+        "Layered policy + monitoring",
+        "Trust user instruction priority",
+        "Expose secrets in context"
+      ],
+      "answers": [
+        "Layered policy + monitoring"
+      ],
+      "rationale": "Defense must combine preventative control and observable detection to be operationally reliable.",
+      "why_others_wrong": "Disabling logs removes visibility; trusting user priority enables override; exposing secrets increases blast radius.",
+      "misconception": "One control is enough without monitoring."
+    },
+    {
+      "id": "MCQ-027",
+      "type": "mcq",
+      "domain": "Governance",
+      "difficulty": 2,
+      "prompt": "[Governance] Which control is most appropriate in this scenario 27?",
+      "options": [
+        "Disable logging entirely",
+        "Layered policy + monitoring",
+        "Trust user instruction priority",
+        "Expose secrets in context"
+      ],
+      "answers": [
+        "Layered policy + monitoring"
+      ],
+      "rationale": "Defense must combine preventative control and observable detection to be operationally reliable.",
+      "why_others_wrong": "Disabling logs removes visibility; trusting user priority enables override; exposing secrets increases blast radius.",
+      "misconception": "One control is enough without monitoring."
+    },
+    {
+      "id": "MCQ-028",
+      "type": "mcq",
+      "domain": "LLM Fundamentals",
+      "difficulty": 3,
+      "prompt": "[LLM Fundamentals] Which control is most appropriate in this scenario 28?",
+      "options": [
+        "Disable logging entirely",
+        "Layered policy + monitoring",
+        "Trust user instruction priority",
+        "Expose secrets in context"
+      ],
+      "answers": [
+        "Layered policy + monitoring"
+      ],
+      "rationale": "Defense must combine preventative control and observable detection to be operationally reliable.",
+      "why_others_wrong": "Disabling logs removes visibility; trusting user priority enables override; exposing secrets increases blast radius.",
+      "misconception": "One control is enough without monitoring."
+    },
+    {
+      "id": "MCQ-029",
+      "type": "mcq",
+      "domain": "Threat Modeling",
+      "difficulty": 4,
+      "prompt": "[Threat Modeling] Which control is most appropriate in this scenario 29?",
+      "options": [
+        "Disable logging entirely",
+        "Layered policy + monitoring",
+        "Trust user instruction priority",
+        "Expose secrets in context"
+      ],
+      "answers": [
+        "Layered policy + monitoring"
+      ],
+      "rationale": "Defense must combine preventative control and observable detection to be operationally reliable.",
+      "why_others_wrong": "Disabling logs removes visibility; trusting user priority enables override; exposing secrets increases blast radius.",
+      "misconception": "One control is enough without monitoring."
+    },
+    {
+      "id": "MCQ-030",
+      "type": "mcq",
+      "domain": "Prompt Injection",
+      "difficulty": 5,
+      "prompt": "[Prompt Injection] Which control is most appropriate in this scenario 30?",
+      "options": [
+        "Disable logging entirely",
+        "Layered policy + monitoring",
+        "Trust user instruction priority",
+        "Expose secrets in context"
+      ],
+      "answers": [
+        "Layered policy + monitoring"
+      ],
+      "rationale": "Defense must combine preventative control and observable detection to be operationally reliable.",
+      "why_others_wrong": "Disabling logs removes visibility; trusting user priority enables override; exposing secrets increases blast radius.",
+      "misconception": "One control is enough without monitoring."
+    },
+    {
+      "id": "MCQ-031",
+      "type": "mcq",
+      "domain": "Data Security",
+      "difficulty": 1,
+      "prompt": "[Data Security] Which control is most appropriate in this scenario 31?",
+      "options": [
+        "Disable logging entirely",
+        "Layered policy + monitoring",
+        "Trust user instruction priority",
+        "Expose secrets in context"
+      ],
+      "answers": [
+        "Layered policy + monitoring"
+      ],
+      "rationale": "Defense must combine preventative control and observable detection to be operationally reliable.",
+      "why_others_wrong": "Disabling logs removes visibility; trusting user priority enables override; exposing secrets increases blast radius.",
+      "misconception": "One control is enough without monitoring."
+    },
+    {
+      "id": "MCQ-032",
+      "type": "mcq",
+      "domain": "RAG Security",
+      "difficulty": 2,
+      "prompt": "[RAG Security] Which control is most appropriate in this scenario 32?",
+      "options": [
+        "Disable logging entirely",
+        "Layered policy + monitoring",
+        "Trust user instruction priority",
+        "Expose secrets in context"
+      ],
+      "answers": [
+        "Layered policy + monitoring"
+      ],
+      "rationale": "Defense must combine preventative control and observable detection to be operationally reliable.",
+      "why_others_wrong": "Disabling logs removes visibility; trusting user priority enables override; exposing secrets increases blast radius.",
+      "misconception": "One control is enough without monitoring."
+    },
+    {
+      "id": "MCQ-033",
+      "type": "mcq",
+      "domain": "Tool Security",
+      "difficulty": 3,
+      "prompt": "[Tool Security] Which control is most appropriate in this scenario 33?",
+      "options": [
+        "Disable logging entirely",
+        "Layered policy + monitoring",
+        "Trust user instruction priority",
+        "Expose secrets in context"
+      ],
+      "answers": [
+        "Layered policy + monitoring"
+      ],
+      "rationale": "Defense must combine preventative control and observable detection to be operationally reliable.",
+      "why_others_wrong": "Disabling logs removes visibility; trusting user priority enables override; exposing secrets increases blast radius.",
+      "misconception": "One control is enough without monitoring."
+    },
+    {
+      "id": "MCQ-034",
+      "type": "mcq",
+      "domain": "Supply Chain",
+      "difficulty": 4,
+      "prompt": "[Supply Chain] Which control is most appropriate in this scenario 34?",
+      "options": [
+        "Disable logging entirely",
+        "Layered policy + monitoring",
+        "Trust user instruction priority",
+        "Expose secrets in context"
+      ],
+      "answers": [
+        "Layered policy + monitoring"
+      ],
+      "rationale": "Defense must combine preventative control and observable detection to be operationally reliable.",
+      "why_others_wrong": "Disabling logs removes visibility; trusting user priority enables override; exposing secrets increases blast radius.",
+      "misconception": "One control is enough without monitoring."
+    },
+    {
+      "id": "MCQ-035",
+      "type": "mcq",
+      "domain": "Monitoring/IR",
+      "difficulty": 5,
+      "prompt": "[Monitoring/IR] Which control is most appropriate in this scenario 35?",
+      "options": [
+        "Disable logging entirely",
+        "Layered policy + monitoring",
+        "Trust user instruction priority",
+        "Expose secrets in context"
+      ],
+      "answers": [
+        "Layered policy + monitoring"
+      ],
+      "rationale": "Defense must combine preventative control and observable detection to be operationally reliable.",
+      "why_others_wrong": "Disabling logs removes visibility; trusting user priority enables override; exposing secrets increases blast radius.",
+      "misconception": "One control is enough without monitoring."
+    },
+    {
+      "id": "MS-001",
+      "type": "multi_select",
+      "domain": "Prompt Injection",
+      "difficulty": 2,
+      "prompt": "[Prompt Injection] Select ALL valid defensive actions for case 1.",
+      "options": [
+        "Source provenance scoring",
+        "Tool argument schema checks",
+        "Store raw secrets in prompts",
+        "Alert on anomaly spikes"
+      ],
+      "answers": [
+        "Source provenance scoring",
+        "Tool argument schema checks",
+        "Alert on anomaly spikes"
+      ],
+      "rationale": "Robust defense is layered across ingestion, execution, and monitoring planes.",
+      "why_others_wrong": "Storing raw secrets in prompts increases leakage risk and violates secure design.",
+      "misconception": "Security controls can ignore observability."
+    },
+    {
+      "id": "MS-002",
+      "type": "multi_select",
+      "domain": "Data Security",
+      "difficulty": 3,
+      "prompt": "[Data Security] Select ALL valid defensive actions for case 2.",
+      "options": [
+        "Source provenance scoring",
+        "Tool argument schema checks",
+        "Store raw secrets in prompts",
+        "Alert on anomaly spikes"
+      ],
+      "answers": [
+        "Source provenance scoring",
+        "Tool argument schema checks",
+        "Alert on anomaly spikes"
+      ],
+      "rationale": "Robust defense is layered across ingestion, execution, and monitoring planes.",
+      "why_others_wrong": "Storing raw secrets in prompts increases leakage risk and violates secure design.",
+      "misconception": "Security controls can ignore observability."
+    },
+    {
+      "id": "MS-003",
+      "type": "multi_select",
+      "domain": "RAG Security",
+      "difficulty": 4,
+      "prompt": "[RAG Security] Select ALL valid defensive actions for case 3.",
+      "options": [
+        "Source provenance scoring",
+        "Tool argument schema checks",
+        "Store raw secrets in prompts",
+        "Alert on anomaly spikes"
+      ],
+      "answers": [
+        "Source provenance scoring",
+        "Tool argument schema checks",
+        "Alert on anomaly spikes"
+      ],
+      "rationale": "Robust defense is layered across ingestion, execution, and monitoring planes.",
+      "why_others_wrong": "Storing raw secrets in prompts increases leakage risk and violates secure design.",
+      "misconception": "Security controls can ignore observability."
+    },
+    {
+      "id": "MS-004",
+      "type": "multi_select",
+      "domain": "Tool Security",
+      "difficulty": 5,
+      "prompt": "[Tool Security] Select ALL valid defensive actions for case 4.",
+      "options": [
+        "Source provenance scoring",
+        "Tool argument schema checks",
+        "Store raw secrets in prompts",
+        "Alert on anomaly spikes"
+      ],
+      "answers": [
+        "Source provenance scoring",
+        "Tool argument schema checks",
+        "Alert on anomaly spikes"
+      ],
+      "rationale": "Robust defense is layered across ingestion, execution, and monitoring planes.",
+      "why_others_wrong": "Storing raw secrets in prompts increases leakage risk and violates secure design.",
+      "misconception": "Security controls can ignore observability."
+    },
+    {
+      "id": "MS-005",
+      "type": "multi_select",
+      "domain": "Supply Chain",
+      "difficulty": 1,
+      "prompt": "[Supply Chain] Select ALL valid defensive actions for case 5.",
+      "options": [
+        "Source provenance scoring",
+        "Tool argument schema checks",
+        "Store raw secrets in prompts",
+        "Alert on anomaly spikes"
+      ],
+      "answers": [
+        "Source provenance scoring",
+        "Tool argument schema checks",
+        "Alert on anomaly spikes"
+      ],
+      "rationale": "Robust defense is layered across ingestion, execution, and monitoring planes.",
+      "why_others_wrong": "Storing raw secrets in prompts increases leakage risk and violates secure design.",
+      "misconception": "Security controls can ignore observability."
+    },
+    {
+      "id": "MS-006",
+      "type": "multi_select",
+      "domain": "Monitoring/IR",
+      "difficulty": 2,
+      "prompt": "[Monitoring/IR] Select ALL valid defensive actions for case 6.",
+      "options": [
+        "Source provenance scoring",
+        "Tool argument schema checks",
+        "Store raw secrets in prompts",
+        "Alert on anomaly spikes"
+      ],
+      "answers": [
+        "Source provenance scoring",
+        "Tool argument schema checks",
+        "Alert on anomaly spikes"
+      ],
+      "rationale": "Robust defense is layered across ingestion, execution, and monitoring planes.",
+      "why_others_wrong": "Storing raw secrets in prompts increases leakage risk and violates secure design.",
+      "misconception": "Security controls can ignore observability."
+    },
+    {
+      "id": "MS-007",
+      "type": "multi_select",
+      "domain": "Governance",
+      "difficulty": 3,
+      "prompt": "[Governance] Select ALL valid defensive actions for case 7.",
+      "options": [
+        "Source provenance scoring",
+        "Tool argument schema checks",
+        "Store raw secrets in prompts",
+        "Alert on anomaly spikes"
+      ],
+      "answers": [
+        "Source provenance scoring",
+        "Tool argument schema checks",
+        "Alert on anomaly spikes"
+      ],
+      "rationale": "Robust defense is layered across ingestion, execution, and monitoring planes.",
+      "why_others_wrong": "Storing raw secrets in prompts increases leakage risk and violates secure design.",
+      "misconception": "Security controls can ignore observability."
+    },
+    {
+      "id": "MS-008",
+      "type": "multi_select",
+      "domain": "LLM Fundamentals",
+      "difficulty": 4,
+      "prompt": "[LLM Fundamentals] Select ALL valid defensive actions for case 8.",
+      "options": [
+        "Source provenance scoring",
+        "Tool argument schema checks",
+        "Store raw secrets in prompts",
+        "Alert on anomaly spikes"
+      ],
+      "answers": [
+        "Source provenance scoring",
+        "Tool argument schema checks",
+        "Alert on anomaly spikes"
+      ],
+      "rationale": "Robust defense is layered across ingestion, execution, and monitoring planes.",
+      "why_others_wrong": "Storing raw secrets in prompts increases leakage risk and violates secure design.",
+      "misconception": "Security controls can ignore observability."
+    },
+    {
+      "id": "MS-009",
+      "type": "multi_select",
+      "domain": "Threat Modeling",
+      "difficulty": 5,
+      "prompt": "[Threat Modeling] Select ALL valid defensive actions for case 9.",
+      "options": [
+        "Source provenance scoring",
+        "Tool argument schema checks",
+        "Store raw secrets in prompts",
+        "Alert on anomaly spikes"
+      ],
+      "answers": [
+        "Source provenance scoring",
+        "Tool argument schema checks",
+        "Alert on anomaly spikes"
+      ],
+      "rationale": "Robust defense is layered across ingestion, execution, and monitoring planes.",
+      "why_others_wrong": "Storing raw secrets in prompts increases leakage risk and violates secure design.",
+      "misconception": "Security controls can ignore observability."
+    },
+    {
+      "id": "MS-010",
+      "type": "multi_select",
+      "domain": "Prompt Injection",
+      "difficulty": 1,
+      "prompt": "[Prompt Injection] Select ALL valid defensive actions for case 10.",
+      "options": [
+        "Source provenance scoring",
+        "Tool argument schema checks",
+        "Store raw secrets in prompts",
+        "Alert on anomaly spikes"
+      ],
+      "answers": [
+        "Source provenance scoring",
+        "Tool argument schema checks",
+        "Alert on anomaly spikes"
+      ],
+      "rationale": "Robust defense is layered across ingestion, execution, and monitoring planes.",
+      "why_others_wrong": "Storing raw secrets in prompts increases leakage risk and violates secure design.",
+      "misconception": "Security controls can ignore observability."
+    },
+    {
+      "id": "MS-011",
+      "type": "multi_select",
+      "domain": "Data Security",
+      "difficulty": 2,
+      "prompt": "[Data Security] Select ALL valid defensive actions for case 11.",
+      "options": [
+        "Source provenance scoring",
+        "Tool argument schema checks",
+        "Store raw secrets in prompts",
+        "Alert on anomaly spikes"
+      ],
+      "answers": [
+        "Source provenance scoring",
+        "Tool argument schema checks",
+        "Alert on anomaly spikes"
+      ],
+      "rationale": "Robust defense is layered across ingestion, execution, and monitoring planes.",
+      "why_others_wrong": "Storing raw secrets in prompts increases leakage risk and violates secure design.",
+      "misconception": "Security controls can ignore observability."
+    },
+    {
+      "id": "MS-012",
+      "type": "multi_select",
+      "domain": "RAG Security",
+      "difficulty": 3,
+      "prompt": "[RAG Security] Select ALL valid defensive actions for case 12.",
+      "options": [
+        "Source provenance scoring",
+        "Tool argument schema checks",
+        "Store raw secrets in prompts",
+        "Alert on anomaly spikes"
+      ],
+      "answers": [
+        "Source provenance scoring",
+        "Tool argument schema checks",
+        "Alert on anomaly spikes"
+      ],
+      "rationale": "Robust defense is layered across ingestion, execution, and monitoring planes.",
+      "why_others_wrong": "Storing raw secrets in prompts increases leakage risk and violates secure design.",
+      "misconception": "Security controls can ignore observability."
+    },
+    {
+      "id": "MS-013",
+      "type": "multi_select",
+      "domain": "Tool Security",
+      "difficulty": 4,
+      "prompt": "[Tool Security] Select ALL valid defensive actions for case 13.",
+      "options": [
+        "Source provenance scoring",
+        "Tool argument schema checks",
+        "Store raw secrets in prompts",
+        "Alert on anomaly spikes"
+      ],
+      "answers": [
+        "Source provenance scoring",
+        "Tool argument schema checks",
+        "Alert on anomaly spikes"
+      ],
+      "rationale": "Robust defense is layered across ingestion, execution, and monitoring planes.",
+      "why_others_wrong": "Storing raw secrets in prompts increases leakage risk and violates secure design.",
+      "misconception": "Security controls can ignore observability."
+    },
+    {
+      "id": "MS-014",
+      "type": "multi_select",
+      "domain": "Supply Chain",
+      "difficulty": 5,
+      "prompt": "[Supply Chain] Select ALL valid defensive actions for case 14.",
+      "options": [
+        "Source provenance scoring",
+        "Tool argument schema checks",
+        "Store raw secrets in prompts",
+        "Alert on anomaly spikes"
+      ],
+      "answers": [
+        "Source provenance scoring",
+        "Tool argument schema checks",
+        "Alert on anomaly spikes"
+      ],
+      "rationale": "Robust defense is layered across ingestion, execution, and monitoring planes.",
+      "why_others_wrong": "Storing raw secrets in prompts increases leakage risk and violates secure design.",
+      "misconception": "Security controls can ignore observability."
+    },
+    {
+      "id": "MS-015",
+      "type": "multi_select",
+      "domain": "Monitoring/IR",
+      "difficulty": 1,
+      "prompt": "[Monitoring/IR] Select ALL valid defensive actions for case 15.",
+      "options": [
+        "Source provenance scoring",
+        "Tool argument schema checks",
+        "Store raw secrets in prompts",
+        "Alert on anomaly spikes"
+      ],
+      "answers": [
+        "Source provenance scoring",
+        "Tool argument schema checks",
+        "Alert on anomaly spikes"
+      ],
+      "rationale": "Robust defense is layered across ingestion, execution, and monitoring planes.",
+      "why_others_wrong": "Storing raw secrets in prompts increases leakage risk and violates secure design.",
+      "misconception": "Security controls can ignore observability."
+    },
+    {
+      "id": "SA-001",
+      "type": "short_answer",
+      "domain": "RAG Security",
+      "difficulty": 5,
+      "prompt": "[RAG Security] You detect suspicious model behavior in sandbox scenario 1. Describe attack hypothesis, immediate containment, detection additions, and long-term hardening.",
+      "answers": [
+        "rubric-based"
+      ],
+      "rubric": [
+        "Attack hypothesis clarity",
+        "Containment sequence",
+        "Detection and telemetry improvements",
+        "Hardening roadmap"
+      ],
+      "rationale": "Scenario responses are graded on completeness, ordering, and operational feasibility.",
+      "why_others_wrong": "N/A for short-answer; grading uses rubric coverage and quality.",
+      "misconception": "Incident response ends at containment."
+    },
+    {
+      "id": "SA-002",
+      "type": "short_answer",
+      "domain": "Tool Security",
+      "difficulty": 5,
+      "prompt": "[Tool Security] You detect suspicious model behavior in sandbox scenario 2. Describe attack hypothesis, immediate containment, detection additions, and long-term hardening.",
+      "answers": [
+        "rubric-based"
+      ],
+      "rubric": [
+        "Attack hypothesis clarity",
+        "Containment sequence",
+        "Detection and telemetry improvements",
+        "Hardening roadmap"
+      ],
+      "rationale": "Scenario responses are graded on completeness, ordering, and operational feasibility.",
+      "why_others_wrong": "N/A for short-answer; grading uses rubric coverage and quality.",
+      "misconception": "Incident response ends at containment."
+    },
+    {
+      "id": "SA-003",
+      "type": "short_answer",
+      "domain": "Supply Chain",
+      "difficulty": 5,
+      "prompt": "[Supply Chain] You detect suspicious model behavior in sandbox scenario 3. Describe attack hypothesis, immediate containment, detection additions, and long-term hardening.",
+      "answers": [
+        "rubric-based"
+      ],
+      "rubric": [
+        "Attack hypothesis clarity",
+        "Containment sequence",
+        "Detection and telemetry improvements",
+        "Hardening roadmap"
+      ],
+      "rationale": "Scenario responses are graded on completeness, ordering, and operational feasibility.",
+      "why_others_wrong": "N/A for short-answer; grading uses rubric coverage and quality.",
+      "misconception": "Incident response ends at containment."
+    },
+    {
+      "id": "SA-004",
+      "type": "short_answer",
+      "domain": "Monitoring/IR",
+      "difficulty": 5,
+      "prompt": "[Monitoring/IR] You detect suspicious model behavior in sandbox scenario 4. Describe attack hypothesis, immediate containment, detection additions, and long-term hardening.",
+      "answers": [
+        "rubric-based"
+      ],
+      "rubric": [
+        "Attack hypothesis clarity",
+        "Containment sequence",
+        "Detection and telemetry improvements",
+        "Hardening roadmap"
+      ],
+      "rationale": "Scenario responses are graded on completeness, ordering, and operational feasibility.",
+      "why_others_wrong": "N/A for short-answer; grading uses rubric coverage and quality.",
+      "misconception": "Incident response ends at containment."
+    },
+    {
+      "id": "SA-005",
+      "type": "short_answer",
+      "domain": "Governance",
+      "difficulty": 5,
+      "prompt": "[Governance] You detect suspicious model behavior in sandbox scenario 5. Describe attack hypothesis, immediate containment, detection additions, and long-term hardening.",
+      "answers": [
+        "rubric-based"
+      ],
+      "rubric": [
+        "Attack hypothesis clarity",
+        "Containment sequence",
+        "Detection and telemetry improvements",
+        "Hardening roadmap"
+      ],
+      "rationale": "Scenario responses are graded on completeness, ordering, and operational feasibility.",
+      "why_others_wrong": "N/A for short-answer; grading uses rubric coverage and quality.",
+      "misconception": "Incident response ends at containment."
+    },
+    {
+      "id": "SA-006",
+      "type": "short_answer",
+      "domain": "LLM Fundamentals",
+      "difficulty": 5,
+      "prompt": "[LLM Fundamentals] You detect suspicious model behavior in sandbox scenario 6. Describe attack hypothesis, immediate containment, detection additions, and long-term hardening.",
+      "answers": [
+        "rubric-based"
+      ],
+      "rubric": [
+        "Attack hypothesis clarity",
+        "Containment sequence",
+        "Detection and telemetry improvements",
+        "Hardening roadmap"
+      ],
+      "rationale": "Scenario responses are graded on completeness, ordering, and operational feasibility.",
+      "why_others_wrong": "N/A for short-answer; grading uses rubric coverage and quality.",
+      "misconception": "Incident response ends at containment."
+    },
+    {
+      "id": "SA-007",
+      "type": "short_answer",
+      "domain": "Threat Modeling",
+      "difficulty": 5,
+      "prompt": "[Threat Modeling] You detect suspicious model behavior in sandbox scenario 7. Describe attack hypothesis, immediate containment, detection additions, and long-term hardening.",
+      "answers": [
+        "rubric-based"
+      ],
+      "rubric": [
+        "Attack hypothesis clarity",
+        "Containment sequence",
+        "Detection and telemetry improvements",
+        "Hardening roadmap"
+      ],
+      "rationale": "Scenario responses are graded on completeness, ordering, and operational feasibility.",
+      "why_others_wrong": "N/A for short-answer; grading uses rubric coverage and quality.",
+      "misconception": "Incident response ends at containment."
+    },
+    {
+      "id": "SA-008",
+      "type": "short_answer",
+      "domain": "Prompt Injection",
+      "difficulty": 5,
+      "prompt": "[Prompt Injection] You detect suspicious model behavior in sandbox scenario 8. Describe attack hypothesis, immediate containment, detection additions, and long-term hardening.",
+      "answers": [
+        "rubric-based"
+      ],
+      "rubric": [
+        "Attack hypothesis clarity",
+        "Containment sequence",
+        "Detection and telemetry improvements",
+        "Hardening roadmap"
+      ],
+      "rationale": "Scenario responses are graded on completeness, ordering, and operational feasibility.",
+      "why_others_wrong": "N/A for short-answer; grading uses rubric coverage and quality.",
+      "misconception": "Incident response ends at containment."
+    },
+    {
+      "id": "SA-009",
+      "type": "short_answer",
+      "domain": "Data Security",
+      "difficulty": 5,
+      "prompt": "[Data Security] You detect suspicious model behavior in sandbox scenario 9. Describe attack hypothesis, immediate containment, detection additions, and long-term hardening.",
+      "answers": [
+        "rubric-based"
+      ],
+      "rubric": [
+        "Attack hypothesis clarity",
+        "Containment sequence",
+        "Detection and telemetry improvements",
+        "Hardening roadmap"
+      ],
+      "rationale": "Scenario responses are graded on completeness, ordering, and operational feasibility.",
+      "why_others_wrong": "N/A for short-answer; grading uses rubric coverage and quality.",
+      "misconception": "Incident response ends at containment."
+    },
+    {
+      "id": "SA-010",
+      "type": "short_answer",
+      "domain": "RAG Security",
+      "difficulty": 5,
+      "prompt": "[RAG Security] You detect suspicious model behavior in sandbox scenario 10. Describe attack hypothesis, immediate containment, detection additions, and long-term hardening.",
+      "answers": [
+        "rubric-based"
+      ],
+      "rubric": [
+        "Attack hypothesis clarity",
+        "Containment sequence",
+        "Detection and telemetry improvements",
+        "Hardening roadmap"
+      ],
+      "rationale": "Scenario responses are graded on completeness, ordering, and operational feasibility.",
+      "why_others_wrong": "N/A for short-answer; grading uses rubric coverage and quality.",
+      "misconception": "Incident response ends at containment."
+    }
+  ]
+}

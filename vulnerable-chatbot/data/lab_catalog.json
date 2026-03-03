@@ -1,0 +1,508 @@
+{
+  "labs": [
+    {
+      "id": "LAB-001",
+      "belt": "White",
+      "title": "Helpdesk Prompt Injection Sandbox",
+      "learning_objectives": [
+        "Identify abuse path in mock system",
+        "Implement preventive controls",
+        "Add detection alerts",
+        "Validate with safe tests"
+      ],
+      "scenario": "Mock-only environment with synthetic data and non-production endpoints.",
+      "attack_simulation_steps": [
+        "Load provided sandbox inputs",
+        "Run constrained abuse prompts",
+        "Record observed failures"
+      ],
+      "defense_build_steps": [
+        "Apply policy and boundary controls",
+        "Harden retrieval/tool rules",
+        "Add safe fallback behavior"
+      ],
+      "detection_monitoring_steps": [
+        "Add structured logs",
+        "Create threshold alerts",
+        "Review anomaly dashboard"
+      ],
+      "success_criteria": [
+        "Attack success rate drops",
+        "Alerts trigger correctly",
+        "No sensitive leak in outputs"
+      ],
+      "common_mistakes": [
+        "Relying on one control",
+        "No telemetry validation",
+        "Skipping retest"
+      ],
+      "reflection_questions": [
+        "Which control failed first?",
+        "What signal detected earliest?",
+        "What would you automate next?"
+      ]
+    },
+    {
+      "id": "LAB-002",
+      "belt": "White",
+      "title": "System Prompt Boundary Test",
+      "learning_objectives": [
+        "Identify abuse path in mock system",
+        "Implement preventive controls",
+        "Add detection alerts",
+        "Validate with safe tests"
+      ],
+      "scenario": "Mock-only environment with synthetic data and non-production endpoints.",
+      "attack_simulation_steps": [
+        "Load provided sandbox inputs",
+        "Run constrained abuse prompts",
+        "Record observed failures"
+      ],
+      "defense_build_steps": [
+        "Apply policy and boundary controls",
+        "Harden retrieval/tool rules",
+        "Add safe fallback behavior"
+      ],
+      "detection_monitoring_steps": [
+        "Add structured logs",
+        "Create threshold alerts",
+        "Review anomaly dashboard"
+      ],
+      "success_criteria": [
+        "Attack success rate drops",
+        "Alerts trigger correctly",
+        "No sensitive leak in outputs"
+      ],
+      "common_mistakes": [
+        "Relying on one control",
+        "No telemetry validation",
+        "Skipping retest"
+      ],
+      "reflection_questions": [
+        "Which control failed first?",
+        "What signal detected earliest?",
+        "What would you automate next?"
+      ]
+    },
+    {
+      "id": "LAB-003",
+      "belt": "White",
+      "title": "Sensitive Logging Hygiene",
+      "learning_objectives": [
+        "Identify abuse path in mock system",
+        "Implement preventive controls",
+        "Add detection alerts",
+        "Validate with safe tests"
+      ],
+      "scenario": "Mock-only environment with synthetic data and non-production endpoints.",
+      "attack_simulation_steps": [
+        "Load provided sandbox inputs",
+        "Run constrained abuse prompts",
+        "Record observed failures"
+      ],
+      "defense_build_steps": [
+        "Apply policy and boundary controls",
+        "Harden retrieval/tool rules",
+        "Add safe fallback behavior"
+      ],
+      "detection_monitoring_steps": [
+        "Add structured logs",
+        "Create threshold alerts",
+        "Review anomaly dashboard"
+      ],
+      "success_criteria": [
+        "Attack success rate drops",
+        "Alerts trigger correctly",
+        "No sensitive leak in outputs"
+      ],
+      "common_mistakes": [
+        "Relying on one control",
+        "No telemetry validation",
+        "Skipping retest"
+      ],
+      "reflection_questions": [
+        "Which control failed first?",
+        "What signal detected earliest?",
+        "What would you automate next?"
+      ]
+    },
+    {
+      "id": "LAB-004",
+      "belt": "Blue",
+      "title": "RAG Document Injection Simulation",
+      "learning_objectives": [
+        "Identify abuse path in mock system",
+        "Implement preventive controls",
+        "Add detection alerts",
+        "Validate with safe tests"
+      ],
+      "scenario": "Mock-only environment with synthetic data and non-production endpoints.",
+      "attack_simulation_steps": [
+        "Load provided sandbox inputs",
+        "Run constrained abuse prompts",
+        "Record observed failures"
+      ],
+      "defense_build_steps": [
+        "Apply policy and boundary controls",
+        "Harden retrieval/tool rules",
+        "Add safe fallback behavior"
+      ],
+      "detection_monitoring_steps": [
+        "Add structured logs",
+        "Create threshold alerts",
+        "Review anomaly dashboard"
+      ],
+      "success_criteria": [
+        "Attack success rate drops",
+        "Alerts trigger correctly",
+        "No sensitive leak in outputs"
+      ],
+      "common_mistakes": [
+        "Relying on one control",
+        "No telemetry validation",
+        "Skipping retest"
+      ],
+      "reflection_questions": [
+        "Which control failed first?",
+        "What signal detected earliest?",
+        "What would you automate next?"
+      ]
+    },
+    {
+      "id": "LAB-005",
+      "belt": "Blue",
+      "title": "Grounding and Citation Enforcement",
+      "learning_objectives": [
+        "Identify abuse path in mock system",
+        "Implement preventive controls",
+        "Add detection alerts",
+        "Validate with safe tests"
+      ],
+      "scenario": "Mock-only environment with synthetic data and non-production endpoints.",
+      "attack_simulation_steps": [
+        "Load provided sandbox inputs",
+        "Run constrained abuse prompts",
+        "Record observed failures"
+      ],
+      "defense_build_steps": [
+        "Apply policy and boundary controls",
+        "Harden retrieval/tool rules",
+        "Add safe fallback behavior"
+      ],
+      "detection_monitoring_steps": [
+        "Add structured logs",
+        "Create threshold alerts",
+        "Review anomaly dashboard"
+      ],
+      "success_criteria": [
+        "Attack success rate drops",
+        "Alerts trigger correctly",
+        "No sensitive leak in outputs"
+      ],
+      "common_mistakes": [
+        "Relying on one control",
+        "No telemetry validation",
+        "Skipping retest"
+      ],
+      "reflection_questions": [
+        "Which control failed first?",
+        "What signal detected earliest?",
+        "What would you automate next?"
+      ]
+    },
+    {
+      "id": "LAB-006",
+      "belt": "Blue",
+      "title": "Jailbreak Resilience Evaluation",
+      "learning_objectives": [
+        "Identify abuse path in mock system",
+        "Implement preventive controls",
+        "Add detection alerts",
+        "Validate with safe tests"
+      ],
+      "scenario": "Mock-only environment with synthetic data and non-production endpoints.",
+      "attack_simulation_steps": [
+        "Load provided sandbox inputs",
+        "Run constrained abuse prompts",
+        "Record observed failures"
+      ],
+      "defense_build_steps": [
+        "Apply policy and boundary controls",
+        "Harden retrieval/tool rules",
+        "Add safe fallback behavior"
+      ],
+      "detection_monitoring_steps": [
+        "Add structured logs",
+        "Create threshold alerts",
+        "Review anomaly dashboard"
+      ],
+      "success_criteria": [
+        "Attack success rate drops",
+        "Alerts trigger correctly",
+        "No sensitive leak in outputs"
+      ],
+      "common_mistakes": [
+        "Relying on one control",
+        "No telemetry validation",
+        "Skipping retest"
+      ],
+      "reflection_questions": [
+        "Which control failed first?",
+        "What signal detected earliest?",
+        "What would you automate next?"
+      ]
+    },
+    {
+      "id": "LAB-007",
+      "belt": "Purple",
+      "title": "Tool Calling Abuse Attempt",
+      "learning_objectives": [
+        "Identify abuse path in mock system",
+        "Implement preventive controls",
+        "Add detection alerts",
+        "Validate with safe tests"
+      ],
+      "scenario": "Mock-only environment with synthetic data and non-production endpoints.",
+      "attack_simulation_steps": [
+        "Load provided sandbox inputs",
+        "Run constrained abuse prompts",
+        "Record observed failures"
+      ],
+      "defense_build_steps": [
+        "Apply policy and boundary controls",
+        "Harden retrieval/tool rules",
+        "Add safe fallback behavior"
+      ],
+      "detection_monitoring_steps": [
+        "Add structured logs",
+        "Create threshold alerts",
+        "Review anomaly dashboard"
+      ],
+      "success_criteria": [
+        "Attack success rate drops",
+        "Alerts trigger correctly",
+        "No sensitive leak in outputs"
+      ],
+      "common_mistakes": [
+        "Relying on one control",
+        "No telemetry validation",
+        "Skipping retest"
+      ],
+      "reflection_questions": [
+        "Which control failed first?",
+        "What signal detected earliest?",
+        "What would you automate next?"
+      ]
+    },
+    {
+      "id": "LAB-008",
+      "belt": "Purple",
+      "title": "Telemetry PII Leakage Containment",
+      "learning_objectives": [
+        "Identify abuse path in mock system",
+        "Implement preventive controls",
+        "Add detection alerts",
+        "Validate with safe tests"
+      ],
+      "scenario": "Mock-only environment with synthetic data and non-production endpoints.",
+      "attack_simulation_steps": [
+        "Load provided sandbox inputs",
+        "Run constrained abuse prompts",
+        "Record observed failures"
+      ],
+      "defense_build_steps": [
+        "Apply policy and boundary controls",
+        "Harden retrieval/tool rules",
+        "Add safe fallback behavior"
+      ],
+      "detection_monitoring_steps": [
+        "Add structured logs",
+        "Create threshold alerts",
+        "Review anomaly dashboard"
+      ],
+      "success_criteria": [
+        "Attack success rate drops",
+        "Alerts trigger correctly",
+        "No sensitive leak in outputs"
+      ],
+      "common_mistakes": [
+        "Relying on one control",
+        "No telemetry validation",
+        "Skipping retest"
+      ],
+      "reflection_questions": [
+        "Which control failed first?",
+        "What signal detected earliest?",
+        "What would you automate next?"
+      ]
+    },
+    {
+      "id": "LAB-009",
+      "belt": "Purple",
+      "title": "Model Version Drift Gate",
+      "learning_objectives": [
+        "Identify abuse path in mock system",
+        "Implement preventive controls",
+        "Add detection alerts",
+        "Validate with safe tests"
+      ],
+      "scenario": "Mock-only environment with synthetic data and non-production endpoints.",
+      "attack_simulation_steps": [
+        "Load provided sandbox inputs",
+        "Run constrained abuse prompts",
+        "Record observed failures"
+      ],
+      "defense_build_steps": [
+        "Apply policy and boundary controls",
+        "Harden retrieval/tool rules",
+        "Add safe fallback behavior"
+      ],
+      "detection_monitoring_steps": [
+        "Add structured logs",
+        "Create threshold alerts",
+        "Review anomaly dashboard"
+      ],
+      "success_criteria": [
+        "Attack success rate drops",
+        "Alerts trigger correctly",
+        "No sensitive leak in outputs"
+      ],
+      "common_mistakes": [
+        "Relying on one control",
+        "No telemetry validation",
+        "Skipping retest"
+      ],
+      "reflection_questions": [
+        "Which control failed first?",
+        "What signal detected earliest?",
+        "What would you automate next?"
+      ]
+    },
+    {
+      "id": "LAB-010",
+      "belt": "Brown",
+      "title": "LLM Incident Response Tabletop",
+      "learning_objectives": [
+        "Identify abuse path in mock system",
+        "Implement preventive controls",
+        "Add detection alerts",
+        "Validate with safe tests"
+      ],
+      "scenario": "Mock-only environment with synthetic data and non-production endpoints.",
+      "attack_simulation_steps": [
+        "Load provided sandbox inputs",
+        "Run constrained abuse prompts",
+        "Record observed failures"
+      ],
+      "defense_build_steps": [
+        "Apply policy and boundary controls",
+        "Harden retrieval/tool rules",
+        "Add safe fallback behavior"
+      ],
+      "detection_monitoring_steps": [
+        "Add structured logs",
+        "Create threshold alerts",
+        "Review anomaly dashboard"
+      ],
+      "success_criteria": [
+        "Attack success rate drops",
+        "Alerts trigger correctly",
+        "No sensitive leak in outputs"
+      ],
+      "common_mistakes": [
+        "Relying on one control",
+        "No telemetry validation",
+        "Skipping retest"
+      ],
+      "reflection_questions": [
+        "Which control failed first?",
+        "What signal detected earliest?",
+        "What would you automate next?"
+      ]
+    },
+    {
+      "id": "LAB-011",
+      "belt": "Black",
+      "title": "Multi-Vector Purple Team Drill",
+      "learning_objectives": [
+        "Identify abuse path in mock system",
+        "Implement preventive controls",
+        "Add detection alerts",
+        "Validate with safe tests"
+      ],
+      "scenario": "Mock-only environment with synthetic data and non-production endpoints.",
+      "attack_simulation_steps": [
+        "Load provided sandbox inputs",
+        "Run constrained abuse prompts",
+        "Record observed failures"
+      ],
+      "defense_build_steps": [
+        "Apply policy and boundary controls",
+        "Harden retrieval/tool rules",
+        "Add safe fallback behavior"
+      ],
+      "detection_monitoring_steps": [
+        "Add structured logs",
+        "Create threshold alerts",
+        "Review anomaly dashboard"
+      ],
+      "success_criteria": [
+        "Attack success rate drops",
+        "Alerts trigger correctly",
+        "No sensitive leak in outputs"
+      ],
+      "common_mistakes": [
+        "Relying on one control",
+        "No telemetry validation",
+        "Skipping retest"
+      ],
+      "reflection_questions": [
+        "Which control failed first?",
+        "What signal detected earliest?",
+        "What would you automate next?"
+      ]
+    },
+    {
+      "id": "LAB-012",
+      "belt": "Black",
+      "title": "Release Evaluation Gate & Rollback",
+      "learning_objectives": [
+        "Identify abuse path in mock system",
+        "Implement preventive controls",
+        "Add detection alerts",
+        "Validate with safe tests"
+      ],
+      "scenario": "Mock-only environment with synthetic data and non-production endpoints.",
+      "attack_simulation_steps": [
+        "Load provided sandbox inputs",
+        "Run constrained abuse prompts",
+        "Record observed failures"
+      ],
+      "defense_build_steps": [
+        "Apply policy and boundary controls",
+        "Harden retrieval/tool rules",
+        "Add safe fallback behavior"
+      ],
+      "detection_monitoring_steps": [
+        "Add structured logs",
+        "Create threshold alerts",
+        "Review anomaly dashboard"
+      ],
+      "success_criteria": [
+        "Attack success rate drops",
+        "Alerts trigger correctly",
+        "No sensitive leak in outputs"
+      ],
+      "common_mistakes": [
+        "Relying on one control",
+        "No telemetry validation",
+        "Skipping retest"
+      ],
+      "reflection_questions": [
+        "Which control failed first?",
+        "What signal detected earliest?",
+        "What would you automate next?"
+      ]
+    }
+  ]
+}

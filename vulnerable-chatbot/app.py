@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 from flask import Flask, render_template, request, session
 from openai import OpenAI
 
@@ -407,6 +408,18 @@ def dojo_quiz_bank():
         active_page="quiz",
     )
 
+
+@app.route("/dojo/core")
+def dojo_core():
+    progress = get_dojo_progress()
+    core_doc = Path(__file__).parent / "docs" / "llm_dojo_core.md"
+    core_text = core_doc.read_text(encoding="utf-8") if core_doc.exists() else "Core blueprint document not found."
+    return render_template(
+        "core.html",
+        core_text=core_text,
+        mastery_score=get_mastery_score(progress),
+        active_page="core",
+    )
 
 if __name__ == "__main__":
     app.run(debug=True)

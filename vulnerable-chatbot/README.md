@@ -11,6 +11,16 @@ A multi-page AI security training web app with:
 - `/dojo/roadmap` → **Learning progression map**
 - `/dojo/labs` → **Red-team and defensive lab center**
 - `/dojo/quiz-bank` → **Question bank by belt**
+- `/dojo/core` → **Full A→H implementation blueprint**
+
+## Core content artifacts
+
+- `docs/llm_dojo_core.md` (A→H structured plan)
+- `data/object_schemas.json` (Lesson/Quiz/Lab/Rubric/Progress schemas)
+- `data/tutor_system_prompts.md` (Tutor/Exam/Lab Coach system prompts)
+- `data/lab_catalog.json` (12-lab safe catalog with defensive + detection steps)
+- `data/quiz_bank_seed.json` (60-question seed bank)
+
 
 ## LLM Dojo architecture
 

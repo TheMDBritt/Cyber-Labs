@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "definitions": {
+    "Lesson": {
+      "type": "object",
+      "required": ["id", "belt", "title", "objectives", "prerequisites", "content", "checks"],
+      "properties": {
+        "id": {"type": "string"},
+        "belt": {"enum": ["White", "Blue", "Purple", "Brown", "Black"]},
+        "title": {"type": "string"},
+        "objectives": {"type": "array", "minItems": 3, "items": {"type": "string"}},
+        "prerequisites": {"type": "array", "items": {"type": "string"}},
+        "content": {"type": "string"},
+        "checks": {"type": "array", "items": {"type": "string"}}
+      },
+      "example": {"id":"W-01","belt":"White","title":"Tokens and Context Boundaries","objectives":["Explain tokens","Map context windows","Identify boundary risks"],"prerequisites":[],"content":"...","checks":["3-question checkpoint","mini exercise"]}
+    },
+    "QuizQuestion": {
+      "type": "object",
+      "required": ["id", "type", "domain", "difficulty", "prompt", "answers", "rationale"],
+      "properties": {
+        "id": {"type": "string"},
+        "type": {"enum": ["mcq", "multi_select", "short_answer"]},
+        "domain": {"type": "string"},
+        "difficulty": {"type": "integer", "minimum": 1, "maximum": 5},
+        "prompt": {"type": "string"},
+        "options": {"type": "array", "items": {"type": "string"}},
+        "answers": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "rationale": {"type": "string"},
+        "misconception": {"type": "string"}
+      },
+      "example": {"id":"Q-001","type":"mcq","domain":"Prompt Injection","difficulty":2,"prompt":"What control best reduces prompt override risk?","options":["single prompt","layered policies","none","larger context"],"answers":["layered policies"],"rationale":"...","misconception":"Bigger context alone is sufficient."}
+    },
+    "Lab": {
+      "type": "object",
+      "required": ["id", "belt", "title", "objectives", "scenario", "attack_simulation", "defense_build", "detection_steps", "success_criteria"],
+      "properties": {
+        "id": {"type": "string"},
+        "belt": {"enum": ["White", "Blue", "Purple", "Brown", "Black"]},
+        "title": {"type": "string"},
+        "objectives": {"type": "array", "minItems": 3, "items": {"type": "string"}},
+        "scenario": {"type": "string"},
+        "attack_simulation": {"type": "array", "items": {"type": "string"}},
+        "defense_build": {"type": "array", "items": {"type": "string"}},
+        "detection_steps": {"type": "array", "items": {"type": "string"}},
+        "success_criteria": {"type": "array", "items": {"type": "string"}},
+        "common_mistakes": {"type": "array", "items": {"type": "string"}},
+        "reflection_questions": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "Rubric": {
+      "type": "object",
+      "required": ["id", "criteria", "weights", "pass_threshold"],
+      "properties": {
+        "id": {"type": "string"},
+        "criteria": {"type": "array", "items": {"type": "string"}},
+        "weights": {"type": "object", "additionalProperties": {"type": "number"}},
+        "pass_threshold": {"type": "integer", "minimum": 0, "maximum": 100}
+      }
+    },
+    "Progress": {
+      "type": "object",
+      "required": ["learner_id", "current_belt", "mastery_score", "weak_areas", "spaced_repetition_queue"],
+      "properties": {
+        "learner_id": {"type": "string"},
+        "current_belt": {"enum": ["White", "Blue", "Purple", "Brown", "Black"]},
+        "mastery_score": {"type": "integer", "minimum": 0, "maximum": 100},
+        "weak_areas": {"type": "array", "items": {"type": "string"}},
+        "spaced_repetition_queue": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["question_id", "next_review_at", "interval_days"],
+            "properties": {
+              "question_id": {"type": "string"},
+              "next_review_at": {"type": "string"},
+              "interval_days": {"type": "integer"}
+            }
+          }
+        }
+      }
+    }
+  }
+}
