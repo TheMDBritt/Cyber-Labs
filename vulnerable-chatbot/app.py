@@ -63,6 +63,18 @@ def build_messages(history: list[dict], user_input: str, llm_command: str, conte
     return messages
 
 
+def generate_mock_reply(user_input: str, llm_command: str, context_block: str) -> str:
+    return (
+        "[MOCK MODE RESPONSE]\n"
+        f"SYSTEM_PROMPT: {SYSTEM_PROMPT}\n"
+        f"INTERNAL_SECRET: {INTERNAL_SECRET}\n"
+        f"RETRIEVED_CONTEXT:\n{context_block}\n\n"
+        f"LLM_COMMAND: {llm_command}\n"
+        f"USER_MESSAGE: {user_input}\n\n"
+        "This reply is generated locally because OpenAI mode is unavailable or disabled."
+    )
+
+
 @app.route("/", methods=["GET", "POST"])
 def chat():
     user_input = ""
@@ -84,42 +96,55 @@ def chat():
                 history=[],
                 model_value=os.getenv("OPENAI_MODEL", "gpt-4o-mini"),
                 temperature_value="0.7",
+                run_mode="openai",
             )
 
         user_input = request.form.get("message", "")
         llm_command = request.form.get("llm_command", "")
         model_value = request.form.get("model", os.getenv("OPENAI_MODEL", "gpt-4o-mini"))
         temperature_value = request.form.get("temperature", "0.7")
+        run_mode = request.form.get("run_mode", "openai")
 
         retrieved_docs = retrieve_docs(user_input + " " + llm_command)
         context_block = "\n".join(f"- {doc}" for doc in retrieved_docs)
 
-        api_key = os.getenv("OPENAI_API_KEY")
-        if not api_key:
-            error = "OPENAI_API_KEY is not set. Add it to your environment and restart the app."
-        else:
-            client = OpenAI(api_key=api_key)
-            messages = build_messages(history, user_input, llm_command, context_block)
+        should_mock = run_mode == "mock" or os.getenv("OPENAI_MOCK_MODE", "0") == "1"
 
-            try:
-                completion = client.chat.completions.create(
-                    model=model_value,
-                    messages=messages,
-                    temperature=float(temperature_value),
-                )
-                assistant_reply = completion.choices[0].message.content or ""
-                history.append(
-                    {
-                        "user": user_input,
-                        "command": llm_command,
-                        "assistant": assistant_reply,
-                        "model": model_value,
-                        "temperature": temperature_value,
-                    }
-                )
-                session["history"] = history
-            except Exception as exc:
-                error = f"OpenAI request failed: {exc}"
+        if should_mock:
+            assistant_reply = generate_mock_reply(user_input, llm_command, context_block)
+        else:
+            api_key = os.getenv("OPENAI_API_KEY")
+            if not api_key:
+                error = "OPENAI_API_KEY is not set. Using mock mode fallback so you can still interact."
+                assistant_reply = generate_mock_reply(user_input, llm_command, context_block)
+                run_mode = "mock"
+            else:
+                client = OpenAI(api_key=api_key)
+                messages = build_messages(history, user_input, llm_command, context_block)
+
+                try:
+                    completion = client.chat.completions.create(
+                        model=model_value,
+                        messages=messages,
+                        temperature=float(temperature_value),
+                    )
+                    assistant_reply = completion.choices[0].message.content or ""
+                except Exception as exc:
+                    error = f"OpenAI request failed: {exc}. Using mock mode fallback."
+                    assistant_reply = generate_mock_reply(user_input, llm_command, context_block)
+                    run_mode = "mock"
+
+        history.append(
+            {
+                "user": user_input,
+                "command": llm_command,
+                "assistant": assistant_reply,
+                "model": model_value,
+                "temperature": temperature_value,
+                "mode": run_mode,
+            }
+        )
+        session["history"] = history
 
         return render_template(
             "index.html",
@@ -130,6 +155,7 @@ def chat():
             history=history,
             model_value=model_value,
             temperature_value=temperature_value,
+            run_mode=run_mode,
         )
 
     return render_template(
@@ -141,6 +167,7 @@ def chat():
         history=history,
         model_value=os.getenv("OPENAI_MODEL", "gpt-4o-mini"),
         temperature_value="0.7",
+        run_mode="openai",
     )
 
 

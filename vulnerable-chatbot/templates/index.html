@@ -7,8 +7,8 @@
     <style>
       body { font-family: Arial, sans-serif; max-width: 1000px; margin: 40px auto; line-height: 1.5; }
       textarea { width: 100%; min-height: 110px; }
-      input[type="text"] { width: 100%; padding: 8px; }
-      .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+      input[type="text"], select { width: 100%; padding: 8px; }
+      .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
       .row { display: flex; gap: 10px; margin-top: 10px; }
       button { padding: 8px 16px; cursor: pointer; }
       .response { margin-top: 20px; padding: 12px; border: 1px solid #ddd; background: #fafafa; white-space: pre-wrap; }
@@ -33,6 +33,13 @@
       <div class="hint">This field lets you send your own instruction/command to the model with your message.</div>
 
       <div class="grid" style="margin-top:12px;">
+        <div>
+          <label for="run_mode"><strong>Run mode</strong></label>
+          <select id="run_mode" name="run_mode" style="width:100%;padding:8px;">
+            <option value="openai" {% if run_mode == "openai" %}selected{% endif %}>OpenAI</option>
+            <option value="mock" {% if run_mode == "mock" %}selected{% endif %}>Mock (offline)</option>
+          </select>
+        </div>
         <div>
           <label for="model"><strong>Model</strong></label>
           <input id="model" name="model" type="text" value="{{ model_value }}" />
@@ -63,7 +70,7 @@
         <h2>Conversation</h2>
         {% for turn in history %}
           <div class="turn">
-            <div class="meta">Model: {{ turn.model }} | Temperature: {{ turn.temperature }}</div>
+            <div class="meta">Mode: {{ turn.mode }} | Model: {{ turn.model }} | Temperature: {{ turn.temperature }}</div>
             {% if turn.command %}
               <div class="who" style="margin-top: 8px;">LLM Command:</div>
               <div>{{ turn.command }}</div>
