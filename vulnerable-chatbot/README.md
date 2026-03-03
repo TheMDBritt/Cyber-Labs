@@ -68,8 +68,16 @@ A multi-page AI security training web app with:
    export OPENAI_MODEL="gpt-4o-mini"
    export OPENAI_MOCK_MODE="1"
    export DEFAULT_RUN_MODE="mock"
+   export DEFAULT_SECURITY_PROFILE="vulnerable"
    ```
 5. Run app:
    ```bash
    python app.py
    ```
+
+
+## Chat Arena attack-learning controls
+
+- **Security Profile = Vulnerable Training (guardrails OFF):** keeps the chatbot intentionally susceptible for prompt-injection/exfiltration learning.
+- **Security Profile = Guarded Demo (guardrails ON):** applies a safer context path for comparison during lessons.
+- **LLM Command field:** directly influences model behavior and mock-mode attack simulations.

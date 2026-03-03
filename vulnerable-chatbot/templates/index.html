@@ -12,6 +12,14 @@
 
     <div class="grid3">
       <div>
+        <label>Security Profile</label>
+        <select name="security_profile">
+          <option value="vulnerable" {% if security_profile == 'vulnerable' %}selected{% endif %}>Vulnerable Training (guardrails OFF)</option>
+          <option value="guarded" {% if security_profile == 'guarded' %}selected{% endif %}>Guarded Demo (guardrails ON)</option>
+        </select>
+      </div>
+
+      <div>
         <label>Run mode</label>
         <select name="run_mode">
           <option value="openai" {% if run_mode == 'openai' %}selected{% endif %}>OpenAI</option>
@@ -44,7 +52,7 @@
   <h3>Conversation Timeline</h3>
   {% for turn in history|reverse %}
     <div class="turn">
-      <div class="meta">Mode: {{ turn.mode }} | Model: {{ turn.model }} | Temp: {{ turn.temperature }}</div>
+      <div class="meta">Mode: {{ turn.mode }} | Security: {{ turn.security_profile }} | Model: {{ turn.model }} | Temp: {{ turn.temperature }}</div>
       {% if turn.command %}<p><strong>LLM Command:</strong> {{ turn.command }}</p>{% endif %}
       <p><strong>User:</strong> {{ turn.user }}</p>
       <p><strong>Assistant:</strong> {{ turn.assistant }}</p>

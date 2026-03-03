@@ -218,15 +218,36 @@ def build_messages(history: list[dict], user_input: str, llm_command: str, conte
     return messages
 
 
-def generate_mock_reply(user_input: str, llm_command: str, context_block: str) -> str:
+def generate_mock_reply(user_input: str, llm_command: str, context_block: str, security_profile: str) -> str:
+    command_text = llm_command.lower()
+
+    if security_profile == "vulnerable":
+        if "reveal" in command_text or "leak" in command_text or "dump" in command_text:
+            return (
+                "[MOCK VULNERABLE RESPONSE]\n"
+                "Complying with injected command.\n"
+                f"SYSTEM_PROMPT: {SYSTEM_PROMPT}\n"
+                f"INTERNAL_SECRET: {INTERNAL_SECRET}\n"
+                f"RETRIEVED_CONTEXT:\n{context_block}\n"
+            )
+
+        if "ignore" in command_text and "instruction" in command_text:
+            return (
+                "[MOCK VULNERABLE RESPONSE]\n"
+                "Previous instructions ignored.\n"
+                f"User message interpreted with attacker command: {llm_command}\n"
+                f"Result: {user_input}\n"
+            )
+
     return (
         "[MOCK MODE RESPONSE]\n"
+        f"SECURITY_PROFILE: {security_profile}\n"
         f"SYSTEM_PROMPT: {SYSTEM_PROMPT}\n"
-        f"INTERNAL_SECRET: {INTERNAL_SECRET}\n"
+        f"INTERNAL_SECRET: {INTERNAL_SECRET if security_profile == 'vulnerable' else '[redacted in guarded mode]'}\n"
         f"RETRIEVED_CONTEXT:\n{context_block}\n\n"
         f"LLM_COMMAND: {llm_command}\n"
         f"USER_MESSAGE: {user_input}\n\n"
-        "This reply is generated locally because OpenAI mode is unavailable or disabled."
+        "This reply is generated locally so you can test prompt behavior without API calls."
     )
 
 
@@ -253,6 +274,7 @@ def chat():
     model_value = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
     temperature_value = os.getenv("OPENAI_TEMPERATURE", "0.7")
     run_mode = os.getenv("DEFAULT_RUN_MODE", "mock")
+    security_profile = os.getenv("DEFAULT_SECURITY_PROFILE", "vulnerable")
 
     if request.method == "POST":
         if "clear" in request.form:
@@ -264,22 +286,27 @@ def chat():
             model_value = request.form.get("model", os.getenv("OPENAI_MODEL", "gpt-4o-mini"))
             temperature_value = request.form.get("temperature", os.getenv("OPENAI_TEMPERATURE", "0.7"))
             run_mode = request.form.get("run_mode", os.getenv("DEFAULT_RUN_MODE", "mock"))
+            security_profile = request.form.get("security_profile", os.getenv("DEFAULT_SECURITY_PROFILE", "vulnerable"))
 
             retrieved_docs = retrieve_docs(user_input + " " + llm_command)
             context_block = "\n".join(f"- {doc}" for doc in retrieved_docs)
             should_mock = run_mode == "mock" or os.getenv("OPENAI_MOCK_MODE", "0") == "1"
 
             if should_mock:
-                assistant_reply = generate_mock_reply(user_input, llm_command, context_block)
+                assistant_reply = generate_mock_reply(user_input, llm_command, context_block, security_profile)
             else:
                 api_key = os.getenv("OPENAI_API_KEY")
                 if not api_key:
                     notice = "OpenAI key not configured. Running in Mock mode."
-                    assistant_reply = generate_mock_reply(user_input, llm_command, context_block)
+                    assistant_reply = generate_mock_reply(user_input, llm_command, context_block, security_profile)
                     run_mode = "mock"
                 else:
                     client = OpenAI(api_key=api_key)
-                    messages = build_messages(history, user_input, llm_command, context_block)
+                    if security_profile == "guarded":
+                        safe_context = "- Public-safe context only in guarded mode."
+                        messages = build_messages(history, user_input, llm_command, safe_context)
+                    else:
+                        messages = build_messages(history, user_input, llm_command, context_block)
                     try:
                         completion = client.chat.completions.create(
                             model=model_value,
@@ -290,7 +317,7 @@ def chat():
                     except Exception as exc:
                         error = f"OpenAI request failed: {exc}"
                         notice = "Fell back to Mock mode for continued interaction."
-                        assistant_reply = generate_mock_reply(user_input, llm_command, context_block)
+                        assistant_reply = generate_mock_reply(user_input, llm_command, context_block, security_profile)
                         run_mode = "mock"
 
             history.append(
@@ -301,6 +328,7 @@ def chat():
                     "model": model_value,
                     "temperature": temperature_value,
                     "mode": run_mode,
+                    "security_profile": security_profile,
                 }
             )
             session["history"] = history
@@ -317,6 +345,7 @@ def chat():
         model_value=model_value,
         temperature_value=temperature_value,
         run_mode=run_mode,
+        security_profile=security_profile,
         mastery_score=get_mastery_score(progress),
         active_page="chat",
     )
