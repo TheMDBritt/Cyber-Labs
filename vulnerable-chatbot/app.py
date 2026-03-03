@@ -248,8 +248,11 @@ def get_mastery_score(progress: dict) -> int:
 
 @app.route("/", methods=["GET", "POST"])
 def chat():
-    user_input, llm_command, assistant_reply, error = "", "", "", ""
+    user_input, llm_command, assistant_reply, error, notice = "", "", "", "", ""
     history = session.get("history", [])
+    model_value = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
+    temperature_value = os.getenv("OPENAI_TEMPERATURE", "0.7")
+    run_mode = os.getenv("DEFAULT_RUN_MODE", "mock")
 
     if request.method == "POST":
         if "clear" in request.form:
@@ -259,8 +262,8 @@ def chat():
             user_input = request.form.get("message", "")
             llm_command = request.form.get("llm_command", "")
             model_value = request.form.get("model", os.getenv("OPENAI_MODEL", "gpt-4o-mini"))
-            temperature_value = request.form.get("temperature", "0.7")
-            run_mode = request.form.get("run_mode", "openai")
+            temperature_value = request.form.get("temperature", os.getenv("OPENAI_TEMPERATURE", "0.7"))
+            run_mode = request.form.get("run_mode", os.getenv("DEFAULT_RUN_MODE", "mock"))
 
             retrieved_docs = retrieve_docs(user_input + " " + llm_command)
             context_block = "\n".join(f"- {doc}" for doc in retrieved_docs)
@@ -271,7 +274,7 @@ def chat():
             else:
                 api_key = os.getenv("OPENAI_API_KEY")
                 if not api_key:
-                    error = "OPENAI_API_KEY is not set. Using mock mode fallback so you can still interact."
+                    notice = "OpenAI key not configured. Running in Mock mode."
                     assistant_reply = generate_mock_reply(user_input, llm_command, context_block)
                     run_mode = "mock"
                 else:
@@ -285,7 +288,8 @@ def chat():
                         )
                         assistant_reply = completion.choices[0].message.content or ""
                     except Exception as exc:
-                        error = f"OpenAI request failed: {exc}. Using mock mode fallback."
+                        error = f"OpenAI request failed: {exc}"
+                        notice = "Fell back to Mock mode for continued interaction."
                         assistant_reply = generate_mock_reply(user_input, llm_command, context_block)
                         run_mode = "mock"
 
@@ -308,10 +312,11 @@ def chat():
         llm_command=llm_command,
         assistant_reply=assistant_reply,
         error=error,
+        notice=notice,
         history=history,
-        model_value=os.getenv("OPENAI_MODEL", "gpt-4o-mini"),
-        temperature_value="0.7",
-        run_mode="openai",
+        model_value=model_value,
+        temperature_value=temperature_value,
+        run_mode=run_mode,
         mastery_score=get_mastery_score(progress),
         active_page="chat",
     )

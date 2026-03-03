@@ -67,6 +67,7 @@ A multi-page AI security training web app with:
    ```bash
    export OPENAI_MODEL="gpt-4o-mini"
    export OPENAI_MOCK_MODE="1"
+   export DEFAULT_RUN_MODE="mock"
    ```
 5. Run app:
    ```bash

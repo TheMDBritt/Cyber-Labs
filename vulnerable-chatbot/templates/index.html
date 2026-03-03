@@ -36,6 +36,7 @@
 </section>
 
 {% if error %}<div class="alert">{{ error }}</div>{% endif %}
+{% if notice %}<div class="alert">{{ notice }}</div>{% endif %}
 {% if assistant_reply %}<section class="card"><h3>Latest Assistant Response</h3><pre>{{ assistant_reply }}</pre></section>{% endif %}
 
 {% if history %}
