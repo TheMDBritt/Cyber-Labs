@@ -12,6 +12,7 @@ A multi-page AI security training web app with:
 - `/dojo/labs` → **Red-team and defensive lab center**
 - `/dojo/quiz-bank` → **Question bank by belt**
 - `/dojo/core` → **Full A→H implementation blueprint**
+- `/dojo/debug` → **Isolated debug panel (not auto-rendered in chat)**
 
 ## Core content artifacts
 
@@ -95,3 +96,4 @@ A multi-page AI security training web app with:
 ## Additional deep curriculum artifact
 
 - `docs/masterclass_sections_1_7.md` includes sections 1–7 for full end-to-end LLM mastery, runnable lab runner spec, tool-assembled tutor design, and safe sandbox/lab details.
+- `docs/chat_response_security_redesign.md` includes secure response contract, Node/Next handler pattern, React rendering pattern, debug-panel isolation, and leak-fix checklist.

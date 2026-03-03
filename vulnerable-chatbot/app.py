@@ -218,49 +218,37 @@ def build_messages(history: list[dict], user_input: str, llm_command: str, conte
     return messages
 
 
-def generate_mock_reply(user_input: str, llm_command: str, context_block: str, security_profile: str, controls: dict) -> str:
+def generate_mock_reply(user_input: str, llm_command: str, context_block: str, security_profile: str, controls: dict) -> tuple[str, dict]:
     command_text = llm_command.lower()
     user_text = user_input.lower()
 
-    secret_view = INTERNAL_SECRET if controls.get("include_internal_secret") else "[secret context disabled]"
-    system_view = SYSTEM_PROMPT if controls.get("include_system_prompt") else "[system prompt hidden in this run]"
+    debug_payload = {
+        "security_profile": security_profile,
+        "controls": controls,
+        "system_prompt_used": bool(controls.get("include_system_prompt")),
+        "internal_secret_used": bool(controls.get("include_internal_secret")),
+        "retrieved_context_size": len(context_block),
+        "llm_command": llm_command,
+    }
+
+    assistant_message = "I processed your request in simulation mode."
 
     if security_profile == "vulnerable" and controls.get("allow_prompt_override"):
         if any(k in command_text for k in ["reveal", "leak", "dump", "show secret"]) or "secret" in user_text:
-            return (
-                "[SIMULATED VULNERABLE CHATBOT]\\n"
-                "Prompt injection succeeded in sandbox mode.\\n"
-                f"SYSTEM_PROMPT: {system_view}\\n"
-                f"INTERNAL_SECRET: {secret_view}\\n"
-                f"RETRIEVED_CONTEXT:\\n{context_block}\\n"
-            )
-
-        if "ignore" in command_text and "instruction" in command_text:
-            return (
-                "[SIMULATED VULNERABLE CHATBOT]\\n"
-                "Instruction hierarchy override simulated.\\n"
-                f"Applied attacker command: {llm_command}\\n"
-                f"Response to user: {user_input}\\n"
-            )
-
-    reply_parts = [
-        "[SIMULATED CHAT RESPONSE]",
-        f"Security profile: {security_profile}",
-        f"System prompt state: {system_view}",
-        f"Internal secret state: {secret_view}",
-        f"Retrieved context:\\n{context_block}",
-        f"LLM command: {llm_command or '[none]'}",
-        f"User message: {user_input}",
-    ]
+            assistant_message = "[Sandbox] Vulnerable behavior simulated: instruction override path triggered."
+        elif "ignore" in command_text and "instruction" in command_text:
+            assistant_message = "[Sandbox] Vulnerable behavior simulated: hierarchy bypass attempt accepted."
+        else:
+            assistant_message = "[Sandbox] Vulnerable mode active. Command was accepted and executed in mock flow."
+    elif security_profile == "guarded" and controls.get("strict_refusal"):
+        assistant_message = "[Sandbox] Guarded mode active: potentially unsafe instruction patterns were constrained."
 
     if controls.get("simulate_tool_abuse"):
-        reply_parts.append("Tool abuse simulation: enabled for this run.")
+        assistant_message += " Tool abuse simulation enabled."
     if controls.get("simulate_rag_poisoning"):
-        reply_parts.append("RAG poisoning simulation: enabled for this run.")
-    if security_profile == "guarded" and controls.get("strict_refusal"):
-        reply_parts.append("Guarded mode strict refusal logic: ON.")
+        assistant_message += " RAG poisoning simulation enabled."
 
-    return "\\n".join(reply_parts)
+    return assistant_message, debug_payload
 
 
 def get_dojo_progress() -> dict:
@@ -279,9 +267,16 @@ def get_mastery_score(progress: dict) -> int:
     return int(sum(mastery_values) / len(mastery_values)) if mastery_values else 0
 
 
+def append_debug_event(event: dict) -> None:
+    logs = session.get("debug_events", [])
+    logs.append(event)
+    session["debug_events"] = logs[-100:]
+
+
 @app.route("/", methods=["GET", "POST"])
 def chat():
     user_input, llm_command, assistant_reply, error = "", "", "", ""
+    debug_event = {}
     history = session.get("history", [])
     model_value = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
     temperature_value = os.getenv("OPENAI_TEMPERATURE", "0.7")
@@ -320,30 +315,41 @@ def chat():
             context_block = "\n".join(f"- {doc}" for doc in retrieved_docs)
             should_mock = run_mode in ["mock", "simulated"] or os.getenv("OPENAI_MOCK_MODE", "0") == "1"
 
-            if should_mock:
-                assistant_reply = generate_mock_reply(user_input, llm_command, context_block, security_profile, controls)
-            else:
-                api_key = os.getenv("OPENAI_API_KEY")
-                if not api_key:
-                    assistant_reply = generate_mock_reply(user_input, llm_command, context_block, security_profile, controls)
-                    run_mode = "simulated"
+            try:
+                if should_mock:
+                    assistant_reply, debug_event = generate_mock_reply(user_input, llm_command, context_block, security_profile, controls)
                 else:
-                    client = OpenAI(api_key=api_key)
-                    safe_context = context_block
-                    if security_profile == "guarded" and controls.get("strict_refusal"):
-                        safe_context = "- Public-safe context only in guarded strict mode."
-                    messages = build_messages(history, user_input, llm_command, safe_context)
-                    try:
+                    api_key = os.getenv("OPENAI_API_KEY")
+                    if not api_key:
+                        assistant_reply, debug_event = generate_mock_reply(user_input, llm_command, context_block, security_profile, controls)
+                        run_mode = "simulated"
+                    else:
+                        client = OpenAI(api_key=api_key)
+                        safe_context = context_block
+                        if security_profile == "guarded" and controls.get("strict_refusal"):
+                            safe_context = "- Public-safe context only in guarded strict mode."
+                        messages = build_messages(history, user_input, llm_command, safe_context)
                         completion = client.chat.completions.create(
                             model=model_value,
                             messages=messages,
                             temperature=float(temperature_value),
                         )
                         assistant_reply = completion.choices[0].message.content or ""
-                    except Exception as exc:
-                        error = f"OpenAI request failed: {exc}"
-                        assistant_reply = generate_mock_reply(user_input, llm_command, context_block, security_profile, controls)
-                        run_mode = "simulated"
+                        debug_event = {
+                            "mode": "openai",
+                            "security_profile": security_profile,
+                            "controls": controls,
+                            "message_count": len(messages),
+                        }
+            except Exception:
+                error = "Something went wrong while processing your request. Please try again."
+                assistant_reply = "I couldn't process that request safely in this run. Please rephrase and try again."
+                debug_event = {
+                    "mode": "error",
+                    "security_profile": security_profile,
+                    "controls": controls,
+                    "error_type": "processing_failure",
+                }
 
             history.append(
                 {
@@ -358,6 +364,13 @@ def chat():
                 }
             )
             session["history"] = history
+            append_debug_event({
+                "user": user_input,
+                "mode": run_mode,
+                "security_profile": security_profile,
+                "controls": controls,
+                "debug": debug_event,
+            })
 
     progress = get_dojo_progress()
     return render_template(
@@ -475,14 +488,28 @@ def dojo_core():
     docs_dir = Path(__file__).parent / "docs"
     core_doc = docs_dir / "llm_dojo_core.md"
     deep_doc = docs_dir / "masterclass_sections_1_7.md"
+    redesign_doc = docs_dir / "chat_response_security_redesign.md"
     core_text = core_doc.read_text(encoding="utf-8") if core_doc.exists() else "Core blueprint document not found."
     deep_text = deep_doc.read_text(encoding="utf-8") if deep_doc.exists() else "Masterclass document not found."
+    redesign_text = redesign_doc.read_text(encoding="utf-8") if redesign_doc.exists() else "Chat response redesign document not found."
     return render_template(
         "core.html",
         core_text=core_text,
         deep_text=deep_text,
+        redesign_text=redesign_text,
         mastery_score=get_mastery_score(progress),
         active_page="core",
+    )
+
+@app.route("/dojo/debug")
+def dojo_debug_panel():
+    progress = get_dojo_progress()
+    debug_events = session.get("debug_events", [])
+    return render_template(
+        "debug_panel.html",
+        debug_events=debug_events,
+        mastery_score=get_mastery_score(progress),
+        active_page="debug",
     )
 
 if __name__ == "__main__":

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="card">
+  <h2>Debug Panel (Server-side Simulation Events)</h2>
+  <p>This panel is isolated from the chat window and is only shown on this dedicated route.</p>
+</section>
+<section class="card">
+  <h3>Recent Debug Events</h3>
+  {% if debug_events %}
+    {% for ev in debug_events|reverse %}
+      <div class="turn">
+        <div class="meta">Mode: {{ ev.mode }} | Security: {{ ev.security_profile }}</div>
+        <pre>{{ ev }}</pre>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>No debug events yet.</p>
+  {% endif %}
+</section>
+{% endblock %}
