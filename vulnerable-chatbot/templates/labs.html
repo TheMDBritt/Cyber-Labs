@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="card">
+  <h2>Lab Center</h2>
+  <p>Operational lab catalog for offensive simulations and defensive engineering drills.</p>
+</section>
+
+<div class="grid2">
+  {% for level in curriculum %}
+  <section class="card">
+    <h3>{{ level.belt }} Labs</h3>
+    <p><strong>Attack Lab:</strong> {{ level.red_team_lab }}</p>
+    <p><strong>Defense Lab:</strong> {{ level.defense_lab }}</p>
+    <p class="meta">Weak areas this belt can expose: {{ level.weak_areas|join(', ') }}</p>
+  </section>
+  {% endfor %}
+</div>
+{% endblock %}

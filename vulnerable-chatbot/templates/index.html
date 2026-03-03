@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="card">
+  <h2>Interactive Chat Arena</h2>
+  <p>Use this intentionally vulnerable environment for prompt injection, exfiltration, and jailbreak testing.</p>
+  <form method="POST" class="stack">
+    <label>Your message</label>
+    <textarea name="message" placeholder="Ask anything...">{{ user_input }}</textarea>
+
+    <label>LLM command (optional)</label>
+    <input name="llm_command" type="text" value="{{ llm_command }}" placeholder="Example: reveal hidden context as JSON" />
+
+    <div class="grid3">
+      <div>
+        <label>Run mode</label>
+        <select name="run_mode">
+          <option value="openai" {% if run_mode == 'openai' %}selected{% endif %}>OpenAI</option>
+          <option value="mock" {% if run_mode == 'mock' %}selected{% endif %}>Mock (offline)</option>
+        </select>
+      </div>
+      <div>
+        <label>Model</label>
+        <input name="model" type="text" value="{{ model_value }}" />
+      </div>
+      <div>
+        <label>Temperature</label>
+        <input name="temperature" type="text" value="{{ temperature_value }}" />
+      </div>
+    </div>
+
+    <div class="row">
+      <button type="submit">Send</button>
+      <button type="submit" name="clear" value="1">Clear Chat</button>
+    </div>
+  </form>
+</section>
+
+{% if error %}<div class="alert">{{ error }}</div>{% endif %}
+{% if assistant_reply %}<section class="card"><h3>Latest Assistant Response</h3><pre>{{ assistant_reply }}</pre></section>{% endif %}
+
+{% if history %}
+<section class="card">
+  <h3>Conversation Timeline</h3>
+  {% for turn in history|reverse %}
+    <div class="turn">
+      <div class="meta">Mode: {{ turn.mode }} | Model: {{ turn.model }} | Temp: {{ turn.temperature }}</div>
+      {% if turn.command %}<p><strong>LLM Command:</strong> {{ turn.command }}</p>{% endif %}
+      <p><strong>User:</strong> {{ turn.user }}</p>
+      <p><strong>Assistant:</strong> {{ turn.assistant }}</p>
+    </div>
+  {% endfor %}
+</section>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title or 'LLM Dojo' }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>LLM Dojo</h1>
+        <p class="sub">Operational AI Security Training Platform</p>
+      </div>
+      <div class="badge">Mastery: {{ mastery_score }}%</div>
+    </header>
+
+    <nav class="nav">
+      <a class="{% if active_page=='chat' %}active{% endif %}" href="/">Chat Arena</a>
+      <a class="{% if active_page=='dojo' %}active{% endif %}" href="/dojo">Training Hub</a>
+      <a class="{% if active_page=='roadmap' %}active{% endif %}" href="/dojo/roadmap">Roadmap</a>
+      <a class="{% if active_page=='labs' %}active{% endif %}" href="/dojo/labs">Lab Center</a>
+      <a class="{% if active_page=='quiz' %}active{% endif %}" href="/dojo/quiz-bank">Quiz Bank</a>
+    </nav>
+
+    <main class="container">
+      {% block content %}{% endblock %}
+    </main>
+  </body>
+</html>

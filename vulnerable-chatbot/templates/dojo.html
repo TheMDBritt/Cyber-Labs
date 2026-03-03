@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="card">
+  <h2>Training Hub</h2>
+  <p>Progress from White Belt to Black Belt. Belts are locked until current belt reaches mastery threshold.</p>
+  {% if message %}<div class="alert">{{ message }}</div>{% endif %}
+  <p><strong>Unlocked belt:</strong> {{ curriculum[current_level].belt }}</p>
+  <p><strong>Completed belts:</strong> {{ progress.completed|length }}</p>
+  <p><strong>Weak areas:</strong> {{ progress.weak_areas|join(', ') if progress.weak_areas else 'None yet' }}</p>
+  <form method="POST"><button name="action" value="reset">Reset Progress</button></form>
+</section>
+
+{% for level in curriculum %}
+{% set i = loop.index0 %}
+<section class="card {% if i > current_level %}locked{% endif %}">
+  <h3>{{ level.belt }} — {{ level.focus }}</h3>
+  <p class="meta">SecAI Alignment: {{ level.secai_alignment }}</p>
+  <p class="meta">Current mastery: {{ progress.mastery.get(level.belt, 0) }}%</p>
+
+  <h4>Structured Lesson</h4>
+  <p><strong>{{ level.lesson.title }}</strong></p>
+  <ul>{% for o in level.lesson.objectives %}<li>{{ o }}</li>{% endfor %}</ul>
+
+  <h4>Red-Team Simulation</h4>
+  <p>{{ level.red_team_lab }}</p>
+
+  <h4>Defensive Lab</h4>
+  <p>{{ level.defense_lab }}</p>
+
+  <form method="POST" class="stack">
+    <input type="hidden" name="level_index" value="{{ i }}" />
+    {% for q in level.quiz %}
+      <label>Q{{ loop.index }}. {{ q.q }}</label>
+      <input type="text" name="q_{{ loop.index0 }}" placeholder="Type your answer" />
+    {% endfor %}
+    <div class="row">
+      <button name="action" value="complete_lesson">Complete Lesson</button>
+      <button name="action" value="complete_red_lab">Complete Red Lab</button>
+      <button name="action" value="complete_defense_lab">Complete Defense Lab</button>
+      <button name="action" value="score_quiz">Score Quiz</button>
+    </div>
+  </form>
+</section>
+{% endfor %}
+{% endblock %}

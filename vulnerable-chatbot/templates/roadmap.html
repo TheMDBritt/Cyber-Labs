@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="card">
+  <h2>Learning Progression Map</h2>
+  <p>A detailed belt-by-belt journey from foundations to enterprise adversarial resilience.</p>
+</section>
+
+<section class="timeline">
+  {% for level in curriculum %}
+  <article class="card belt">
+    <h3>{{ loop.index }}. {{ level.belt }}</h3>
+    <p><strong>Focus:</strong> {{ level.focus }}</p>
+    <p><strong>SecAI + Beyond:</strong> {{ level.secai_alignment }}</p>
+    <p><strong>Lesson:</strong> {{ level.lesson.title }}</p>
+    <p><strong>Red Team:</strong> {{ level.red_team_lab }}</p>
+    <p><strong>Defense:</strong> {{ level.defense_lab }}</p>
+  </article>
+  {% endfor %}
+</section>
+{% endblock %}

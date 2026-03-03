@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="card">
+  <h2>Quiz Bank</h2>
+  <p>Reference pool of 5-question checks per belt for targeted review and weak-area remediation.</p>
+</section>
+
+{% for level in curriculum %}
+<section class="card">
+  <h3>{{ level.belt }} — 5-Question Quiz</h3>
+  <ol>
+    {% for q in level.quiz %}
+    <li>{{ q.q }}</li>
+    {% endfor %}
+  </ol>
+</section>
+{% endfor %}
+{% endblock %}
