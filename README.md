@@ -4,6 +4,12 @@ Hands-on home lab work across identity, endpoint, and detection scenarios. Each 
 
 ---
 
+## Featured Lab
+
+**[NFL-RBAC-AD](./NFL-RBAC-AD)** · Active Directory RBAC and PAM model for a simulated NFL front office. AGDLP nesting, tiered privileged access, and a dedicated `NCAA_Disabled` offboarding OU.
+
+---
+
 ## Lab Areas
 
 - **Active Directory:** domain build-out (`cyberlab.local`), OU strategy, security group design, GPO authoring
@@ -23,7 +29,6 @@ Windows Server, Active Directory, Group Policy, Kali Linux, Wireshark, common SI
 
 ## Related Projects
 
-- [NFL-RBAC-AD](https://github.com/TheMDBritt/NFL-RBAC-AD): the AD work in this lab applied to a full RBAC and PAM model
 - [okta](https://github.com/TheMDBritt/okta): the IAM equivalent on the cloud identity side
 
 ---
