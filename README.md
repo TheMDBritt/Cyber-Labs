@@ -26,7 +26,6 @@ Smaller modules used for adjacent skill-building.
 |---|---|
 | [network fundamentals](./network%20fundamentals) | Networking primitives, subnetting, packet capture |
 | [vulnerable-chatbot](./vulnerable-chatbot) | Intentionally-vulnerable LLM target used for prompt-injection and exfiltration testing |
-| [job-apply-bot](./job-apply-bot) | Automation side-project |
 
 ---
 
