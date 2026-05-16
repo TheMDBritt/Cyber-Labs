@@ -13,7 +13,6 @@ These labs back the **Cybersecurity Home Lab** project on my resume.
 | Lab | Focus | Stack |
 |---|---|---|
 | [HomeLabSetUp](./HomeLabSetUp) | Initial environment build, DNS troubleshooting, resolver recovery, VM stabilization for SIEM ingestion | VirtualBox, Ubuntu Server, systemd-resolved |
-| [NCAA Athlete Identity Lifecycle Management (Active Directory)](./NCAA%20Athlete%20Identity%20Lifecycle%20Management%20%28Active%20Directory%29) | RBAC model across simulated NCAA departments with AGDLP nesting, separation of duties, least-privilege enforcement, and a dedicated `NCAA_Disabled` OU for offboarding | Active Directory, Windows Server, RBAC, AGDLP |
 | [Windows-Security-System-Lab](./Windows-Security-System-Lab) | Windows endpoint hardening, GPO enforcement, and security baseline validation | Windows 10/11, Group Policy, local security policy |
 | [windows-user-account-management-lab](./windows-user-account-management-lab) | IAM lifecycle operations (provisioning, modification, deprovisioning) on Windows user accounts | Windows Server, PowerShell, local + domain accounts |
 
