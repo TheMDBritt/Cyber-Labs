@@ -6,9 +6,7 @@ A multi-VM VirtualBox environment built and maintained to practice IAM lifecycle
 
 ---
 
-## Featured labs (resume-tied)
-
-These labs back the **Cybersecurity Home Lab** project on my resume.
+## Featured labs 
 
 | Lab | Focus | Stack |
 |---|---|---|
